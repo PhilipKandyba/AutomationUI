@@ -1,0 +1,10 @@
+{
+  "Test/test_suit.py::test_email_empty_password_valid": true,
+  "Test/test_suit.py::test_email_not_valid_password_empty": true,
+  "Test/test_suit.py::test_email_not_valid_pasword_valid": true,
+  "Test/test_suit.py::test_email_valid_password_empty": true,
+  "Test/test_suit.py::test_empty_fields": true,
+  "Test/test_suit.py::test_empty_fields[chrome]": true,
+  "Test/test_suit.py::test_unregistered_user_valid_password": true,
+  "Test/test_suit.py::test_user_not_confirm_email": true
+}
