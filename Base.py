@@ -7,6 +7,7 @@ class Page:
     def __init__(self, driver):
         self.driver = driver
         driver.maximize_window()
+        driver.get('https://client.triggmine.com.ua/login')
 
     def find_element(self, locator):
         return self.driver.find_element(locator[0], locator[1])

@@ -1,8 +1,11 @@
-# Login in
-def test_login_in(driver):
-    driver.login_in('philip.kanduba@gmail.com', '123456')
-    assert driver.is_he_title()
+from Pages.Login.LoginPage import LoginPage
+from Pages.Setup.SetupPage import SetupPage
 
+
+# Login in
+def test_login_in(login, setup):
+    login.login_in('philip.kanduba@gmail.com', '123456')
+    assert setup.is_he_title()
 
 # All field is empty.
 def test_empty_fields(driver):

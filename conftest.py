@@ -13,7 +13,16 @@ browsers = {
 @pytest.yield_fixture(params=browsers.keys())
 def driver(request):
     browser = browsers[request.param]()
-    login_page = LoginPage(browser)
-    login_page.open_page('https://client.triggmine.com.ua/login')
-    yield login_page
+    # Тут я создаю ексзепляр класса и передаю ему драйвер.
+    yield browser
     browser.quit()
+
+@pytest.fixture()
+def login(driver):
+    login = LoginPage(driver)
+    return login
+
+@pytest.fixture()
+def setup(driver):
+    setup = SetupPage(driver)
+    return setup
