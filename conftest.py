@@ -1,4 +1,4 @@
-import pytest
+﻿import pytest
 from selenium import webdriver
 from Pages.Login.LoginPage import LoginPage
 from Pages.Setup.SetupPage import SetupPage
@@ -6,7 +6,7 @@ from Pages.Setup.SetupPage import SetupPage
 
 browsers = {
     'chrome': webdriver.Chrome,
-    # 'firefox': webdriver.Firefox
+    'firefox': webdriver.Firefox
 }
 
 
