@@ -10,10 +10,9 @@ browsers = {
 }
 
 
-@pytest.yield_fixture(params=browsers.keys())
+@pytest.yield_fixture(params=sorted(browsers.keys()))
 def driver(request):
     browser = browsers[request.param]()
-    # Тут я создаю ексзепляр класса и передаю ему драйвер.
     yield browser
     browser.quit()
 
