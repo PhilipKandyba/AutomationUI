@@ -1,0 +1,4 @@
+base.is_displayed
+True
+base.is_displayed
+True

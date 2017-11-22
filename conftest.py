@@ -2,11 +2,12 @@
 from selenium import webdriver
 from Pages.Login.LoginPage import LoginPage
 from Pages.Setup.SetupPage import SetupPage
+from Pages.SignUp.SignUpPage import SignUpPage
 
 
 browsers = {
     'chrome': webdriver.Chrome,
-    'firefox': webdriver.Firefox
+    # 'firefox': webdriver.Firefox
 }
 
 
@@ -25,3 +26,8 @@ def login(driver):
 def setup(driver):
     setup = SetupPage(driver)
     return setup
+
+@pytest.fixture()
+def sign_up(driver):
+    sign_up = SignUpPage(driver)
+    return sign_up

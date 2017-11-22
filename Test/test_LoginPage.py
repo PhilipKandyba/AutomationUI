@@ -1,14 +1,13 @@
-from Pages.Login.LoginPage import LoginPage
-from Pages.Setup.SetupPage import SetupPage
-
-
 # Login in
 def test_login_in(login, setup):
+    login.open_login_page()
     login.login_in('philip.kanduba@gmail.com', '123456')
     assert setup.is_he_title()
 
+
 # All field is empty.
 def test_empty_fields(login):
+    login.open_login_page()
     login.click_login_button()
     assert login.is_notification_from_email_field()
     assert login.is_notification_from_password_field()
@@ -16,6 +15,7 @@ def test_empty_fields(login):
 
 # Valid Email. Empty password field.
 def test_email_valid_password_empty(login):
+    login.open_login_page()
     login.enter_email('mail@em.com')
     login.click_login_button()
     assert login.is_notification_from_password_field()
@@ -23,6 +23,7 @@ def test_email_valid_password_empty(login):
 
 # Not valid Email. Empty password field.
 def test_email_not_valid_password_empty(login):
+    login.open_login_page()
     login.enter_email('some_text')
     login.click_login_button()
     assert login.text_notification_from_email_field() == 'Invalid email address'
@@ -30,6 +31,7 @@ def test_email_not_valid_password_empty(login):
 
 # Empty Email field. Valid password.
 def test_email_empty_password_valid(login):
+    login.open_login_page()
     login.enter_password('123456')
     login.click_login_button()
     assert login.text_notification_from_email_field() == 'Required'
@@ -37,6 +39,7 @@ def test_email_empty_password_valid(login):
 
 # Not valid Email. Valid password.
 def test_email_not_valid_pasword_valid(login):
+    login.open_login_page()
     login.enter_email('some_text')
     login.enter_password('123456')
     login.click_login_button()
@@ -45,6 +48,7 @@ def test_email_not_valid_pasword_valid(login):
 
 # Not register user. Valid password.
 def test_unregistered_user_valid_password(login):
+    login.open_login_page()
     login.enter_email('qwe_test@qwe.com')
     login.enter_password('123456')
     login.click_login_button()
@@ -54,7 +58,8 @@ def test_unregistered_user_valid_password(login):
 
 # User not confirmed own email.
 def test_user_not_confirm_email(login):
-    login.enter_email('philip.kanduba+test4@gmail.com')
+    login.open_login_page()
+    login.enter_email('philip.kandubaqwe@gmail.com')
     login.enter_password('123456')
     login.click_login_button()
     assert login.is_form_notification()

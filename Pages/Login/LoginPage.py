@@ -1,10 +1,13 @@
 from Base import Page
+from Data import URL
 from Pages.Login.LoginPageLocators import LoginPageLocators
 from Pages.Setup.SetupPageLocators import SetupPageLocators
-from selenium.webdriver.common.by import By
 
 
 class LoginPage(Page):
+    def open_login_page(self):
+        self.open_page(URL.LOGIN_PAGE)
+
     def is_notification_from_email_field(self):
         return self.is_displayed(LoginPageLocators.NOTIFICATION_EMPTY_EMAIL_FIELD)
 

@@ -1,0 +1,66 @@
+<ns0:test-suite xmlns:ns0="urn:model.allure.qatools.yandex.ru" start="1510963337278" stop="1510963381663">
+  <name>Test.test_suit</name>
+  <labels/>
+  <test-cases>
+    <test-case start="1510963337278" status="passed" stop="1510963346130">
+      <name>test_login_in[chrome]</name>
+      <attachments>
+        <attachment source="4ef07a8c-e7d2-4d8a-a6cf-6ddb5bac2de9-attachment.txt" title="Captured stdout call" type="text/plain"/>
+      </attachments>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="13956-MainThread"/>
+        <label name="host" value="DESKTOP-1PV08TS"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1510963349254" status="passed" stop="1510963357573">
+      <name>test_login_in[firefox]</name>
+      <attachments>
+        <attachment source="d1c7bfb0-5312-4c07-acce-7ca98cd82f91-attachment.txt" title="Captured stdout call" type="text/plain"/>
+      </attachments>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="13956-MainThread"/>
+        <label name="host" value="DESKTOP-1PV08TS"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1510963357712" status="passed" stop="1510963364352">
+      <name>test_empty_fields[chrome]</name>
+      <attachments>
+        <attachment source="6a3d746e-c31f-44a4-b0e2-19fa674a1f6a-attachment.txt" title="Captured stdout call" type="text/plain"/>
+      </attachments>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="13956-MainThread"/>
+        <label name="host" value="DESKTOP-1PV08TS"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1510963367532" status="passed" stop="1510963374611">
+      <name>test_empty_fields[firefox]</name>
+      <attachments>
+        <attachment source="b97c741e-894b-4693-a12b-8c4fce957231-attachment.txt" title="Captured stdout call" type="text/plain"/>
+      </attachments>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="13956-MainThread"/>
+        <label name="host" value="DESKTOP-1PV08TS"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1510963374856" status="passed" stop="1510963381663">
+      <name>test_email_valid_password_empty[chrome]</name>
+      <attachments>
+        <attachment source="73aad944-c62f-40e8-aa67-d793f845bb4e-attachment.txt" title="Captured stdout call" type="text/plain"/>
+      </attachments>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="13956-MainThread"/>
+        <label name="host" value="DESKTOP-1PV08TS"/>
+      </labels>
+      <steps/>
+    </test-case>
+  </test-cases>
+</ns0:test-suite>

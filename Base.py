@@ -1,5 +1,7 @@
+import requests
 import selenium.webdriver.support.expected_conditions as ec
 from selenium.webdriver.support.ui import WebDriverWait
+from Data.URL import base_page
 
 
 class Page:
@@ -7,15 +9,12 @@ class Page:
     def __init__(self, driver):
         self.driver = driver
         driver.maximize_window()
-        driver.get('https://client.triggmine.com.ua/login')
 
     def find_element(self, locator):
         return self.driver.find_element(locator[0], locator[1])
 
     def is_displayed(self, locator):
-        print('base.is_displayed')
-        result = self.driver.find_element(locator[0], locator[1]).is_displayed()
-        print(result)
+        self.driver.inplicitly_wait(10)
         return self.driver.find_element(locator[0], locator[1]).is_displayed()
 
     def send_keys(self, locator, text):
@@ -23,7 +22,11 @@ class Page:
         self.driver.find_element(locator[0], locator[1]).send_keys(text)
 
     def open_page(self, url):
-        self.driver.get(url)
+        response = requests.get(base_page + url)
+        if response.status_code != 200:
+            raise Exception('Page is not available, status code: ' + str(response.status_code))
+        else:
+            self.driver.get(base_page + url)
 
     def click(self, locator):
         self.driver.find_element(locator[0], locator[1]).click()

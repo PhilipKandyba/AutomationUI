@@ -1,11 +1,5 @@
 {
-  "test_suit.py::test_email_empty_password_valid[chrome]": true,
-  "test_suit.py::test_email_not_valid_password_empty[chrome]": true,
-  "test_suit.py::test_email_not_valid_pasword_valid[chrome]": true,
-  "test_suit.py::test_email_valid_password_empty[chrome]": true,
-  "test_suit.py::test_empty_fields[chrome]": true,
   "test_suit.py::test_login_in[chrome]": true,
-  "test_suit.py::test_open[chrome]": true,
-  "test_suit.py::test_unregistered_user_valid_password[chrome]": true,
-  "test_suit.py::test_user_not_confirm_email[chrome]": true
+  "test_suit.py::test_login_in[firefox]": true,
+  "test_suit.py::test_open[chrome]": true
 }
