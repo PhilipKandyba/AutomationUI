@@ -14,7 +14,7 @@ class Page:
         return self.driver.find_element(locator[0], locator[1])
 
     def is_displayed(self, locator):
-        self.driver.inplicitly_wait(10)
+        self.driver.implicitly_wait(10)
         return self.driver.find_element(locator[0], locator[1]).is_displayed()
 
     def send_keys(self, locator, text):
