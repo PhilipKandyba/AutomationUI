@@ -50,3 +50,10 @@ def test_first_name_url_required_massage(driver):
     sign_up.send_keys_password('some_text')
     sign_up.click_signup_button()
     assert sign_up.is_first_name_field_required_massage()
+
+
+def test_one(driver, industry='Fashion'):
+    sign_up = SignUpPage(driver)
+    sign_up.open_signup_page()
+    sign_up.chose_industry(industry)
+    assert sign_up.is_selected_industry(industry)

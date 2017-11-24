@@ -1,7 +1,8 @@
 from Base import Page
 from Data import URL
 from Pages.SignUp.SignupPageLocators import SignUpPageLocators
-
+from Pages.SignUp.SignupPageLocators import select_industry
+from Pages.SignUp.SignupPageLocators import selected_industry
 
 class SignUpPage(Page):
     def open_signup_page(self):
@@ -40,3 +41,13 @@ class SignUpPage(Page):
 
     def send_keys_password(self, text):
         self.send_keys(SignUpPageLocators.PASSWORD_FIELD, text)
+
+    def chose_industry(self, industry_name):
+        self.click(SignUpPageLocators.INDUSTRY_SELECT_BUTTON)
+        return self.click(select_industry(industry_name))
+
+    def is_selected_industry(self, industry_name):
+        return self.is_displayed(selected_industry(industry_name))
+
+
+

@@ -1,8 +1,9 @@
 {
-  "Test/test_LoginPage.py::test_login_in[chrome]": true,
   "Test/test_LoginPage.py::test_user_not_confirm_email[chrome]": true,
   "Test/test_LoginPage.py::test_user_not_confirm_email[firefox]": true,
-  "Test/test_SignUp.py::test_all_required_massage_is_displayed[chrome]": true,
+  "Test/test_SignUp.py::test_email_required_massage[chrome]": true,
+  "Test/test_SignUp.py::test_password_url_required_massage[chrome]": true,
+  "Test/test_SignUp.py::test_shop_url_required_massage[chrome]": true,
   "Test/test_suit.py::test_email_empty_password_valid": true,
   "Test/test_suit.py::test_email_empty_password_valid[chrome]": true,
   "Test/test_suit.py::test_email_not_valid_password_empty": true,
