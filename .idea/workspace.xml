@@ -2,42 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db2b604f-5b0b-4665-b20e-fbbb3a97ebda" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Data/Industry.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Data/Users.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Pages/Dashboard/DashboardPage.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Pages/Dashboard/DashboardPageLocators.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Pages/Dashboard/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Pages/Header/HeaderElement.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Pages/Header/HeaderElementLocators.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Pages/Header/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Pages/RessetPasword/ResetPasswordPageLocators.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Pages/RessetPasword/RessetPasswordPage.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Pages/RessetPasword/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Pages/SignUp/SignUpSuccessPage.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Pages/SignUp/SignUpSuccessPageLocators.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tools/CheckEmail.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/allure-results/4ef07a8c-e7d2-4d8a-a6cf-6ddb5bac2de9-attachment.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/allure-results/6a3d746e-c31f-44a4-b0e2-19fa674a1f6a-attachment.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/allure-results/73aad944-c62f-40e8-aa67-d793f845bb4e-attachment.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/allure-results/b97c741e-894b-4693-a12b-8c4fce957231-attachment.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/allure-results/bfb09f0e-de5d-40eb-9596-e6f44d24ea2a-testsuite.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/allure-results/d1c7bfb0-5312-4c07-acce-7ca98cd82f91-attachment.txt" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.cache/v/cache/lastfailed" afterPath="$PROJECT_DIR$/.cache/v/cache/lastfailed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Base.py" afterPath="$PROJECT_DIR$/Base.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Data/URL.py" afterPath="$PROJECT_DIR$/Data/URL.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pages/Login/LoginPage.py" afterPath="$PROJECT_DIR$/Pages/Login/LoginPage.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pages/Login/LoginPageLocators.py" afterPath="$PROJECT_DIR$/Pages/Login/LoginPageLocators.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pages/SignUp/SignUpPage.py" afterPath="$PROJECT_DIR$/Pages/SignUp/SignUpPage.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pages/SignUp/SignupPageLocators.py" afterPath="$PROJECT_DIR$/Pages/SignUp/SignupPageLocators.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test/.cache/v/cache/lastfailed" afterPath="$PROJECT_DIR$/Test/.cache/v/cache/lastfailed" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test/debug.log" afterPath="$PROJECT_DIR$/Test/debug.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test/test_LoginPage.py" afterPath="$PROJECT_DIR$/Test/test_LoginPage.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test/test_SignUp.py" afterPath="$PROJECT_DIR$/Test/test_SignUp.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conftest.py" afterPath="$PROJECT_DIR$/conftest.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/debug.log" afterPath="$PROJECT_DIR$/debug.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/geckodriver.log" afterPath="$PROJECT_DIR$/geckodriver.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/new.py" afterPath="$PROJECT_DIR$/new.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/new.py" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Tools/CheckEmail.py" afterPath="$PROJECT_DIR$/Tools/CheckEmail.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -219,7 +185,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="2161" />
     <option name="y" value="-28" />
     <option name="width" value="1550" />
@@ -465,7 +431,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1911" y="-9" width="1938" height="1058" extended-state="7" />
+    <frame x="1911" y="-9" width="1938" height="1058" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16272825" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />

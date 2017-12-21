@@ -7,7 +7,7 @@ from selenium import webdriver
 def check_email(sub):
     time.sleep(5)
     mail = imaplib.IMAP4_SSL('imap.gmail.com')
-    mail.login('philip.kanduba', 'filosof0955567051')
+    mail.login('***', '***')
     mail.select("inbox")
     for i in range(30):
         try:
