@@ -1,14 +1,19 @@
+from Data import URL
 from Pages.Login.LoginPage import LoginPage
-from Pages.Setup.SetupPage import SetupPage
+from Pages.SignUp.SignUpPage import SignUpPage
+from Pages.Header.HeaderElement import HeaderElement
+from Pages.Dashboard.DashboardPage import DashboardPage
+from Pages.RessetPasword.RessetPasswordPage import ResetPasswordPage
+from Data.Users import REAL_USER_EMAIL, NEW_USER_PASSWORD, UNCONFIRMED_USER_EMAIL
 
 
 # Login in
 def test_login_in(driver):
-    setup = SetupPage(driver)
     login = LoginPage(driver)
+    dashboard = DashboardPage(driver)
     login.open_login_page()
-    login.login_in('philip.kanduba@gmail.com', '123456')
-    assert setup.is_he_title()
+    login.login_in(REAL_USER_EMAIL, NEW_USER_PASSWORD)
+    assert dashboard.is_statistic_header()
 
 
 # All field is empty.
@@ -48,7 +53,7 @@ def test_email_empty_password_valid(driver):
 
 
 # Not valid Email. Valid password.
-def test_email_not_valid_pasword_valid(driver):
+def test_email_not_valid_password_valid(driver):
     login = LoginPage(driver)
     login.open_login_page()
     login.enter_email('some_text')
@@ -72,11 +77,47 @@ def test_unregistered_user_valid_password(driver):
 def test_user_not_confirm_email(driver):
     login = LoginPage(driver)
     login.open_login_page()
-    login.enter_email('philip.kandubaqwe@gmail.com')
+    login.enter_email(UNCONFIRMED_USER_EMAIL)
     login.enter_password('123456')
     login.click_login_button()
     assert login.is_form_notification()
     assert login.text_form_notification() == 'User have to confirm his email'
 
 
+# Real email, incorrect password.
+def test_correct_email_incorrect_password(driver):
+    login = LoginPage(driver)
+    login.open_login_page()
+    login.enter_email(REAL_USER_EMAIL)
+    login.enter_password('654321')
+    login.click_login_button()
+    assert login.text_form_notification() == 'The user name or password is incorrect.'
+
+
+# Check "Sign up" link
+def test_check_sign_up_link(driver):
+    login = LoginPage(driver)
+    sign_up = SignUpPage(driver)
+    header = HeaderElement(driver)
+    login.open_login_page()
+    header.click_sign_up_link()
+    assert sign_up.is_sign_up_button()
+
+
+# Check link on Logo
+def test_check_img_link(driver):
+    login = LoginPage(driver)
+    header = HeaderElement(driver)
+    login.open_login_page()
+    header.click_logo()
+    assert login.current_url() == URL.TRIGGMINE_LENDING
+
+
+# Check link "Reset password"
+def test_check_reset_password_link(driver):
+    login = LoginPage(driver)
+    password_reset = ResetPasswordPage(driver)
+    login.open_login_page()
+    login.click_link_forgot_password()
+    assert password_reset.is_reset_password_page_header()
 

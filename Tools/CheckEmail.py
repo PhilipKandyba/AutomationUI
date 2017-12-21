@@ -2,16 +2,16 @@ import imaplib
 import quopri
 import re
 import time
-from selenium import webdriver
+
 
 def check_email(sub):
-    time.sleep(5)
+    time.sleep(10)
     mail = imaplib.IMAP4_SSL('imap.gmail.com')
     mail.login('philip.kanduba', 'filosof0955567051')
     mail.select("inbox")
     for i in range(30):
         try:
-            result, data = mail.uid('search', None, '(HEADER Subject "' + sub + '")')
+            result, data = mail.uid('search', None, '(UNSEEN)', '(HEADER Subject "' + sub + '")')
             ids = data[0]  # Получаем сроку номеров писем
             id_list = ids.split()  # Разделяем ID писем
             latest_email_uid = data[0].split()[-1]  # Берем последний ID
@@ -27,9 +27,6 @@ def check_email(sub):
                 break
         except:
             print(i)
-            time.sleep(10)
+            time.sleep(3)
     else:
         raise Exception('Email was not found')
-
-
-webdriver.Chrome().get(check_email('Activate your account at TriggMine'))

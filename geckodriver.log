@@ -522,3 +522,26 @@ Unable to read VR Path Registry from C:\Users\user\AppData\Local\openvr\openvrpa
 1511346634974	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
 1511346635074	Marionette	INFO	New connections will no longer be accepted
 [GFX1-]: Receive IPC close with reason=AbnormalShutdown
+1513174323294	geckodriver	INFO	geckodriver 0.19.0
+1513174323582	geckodriver	INFO	Listening on 127.0.0.1:50637
+1513174325498	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\user\\AppData\\Local\\Temp\\rust_mozprofile.Z4gcxFVRFumo"
+1513174326639	addons.xpi	WARN	Error parsing extensions state: [Exception... "Component returned failure code: 0x80520012 (NS_ERROR_FILE_NOT_FOUND) [amIAddonManagerStartup.readStartupData]"  nsresult: "0x80520012 (NS_ERROR_FILE_NOT_FOUND)"  location: "JS frame :: resource://gre/modules/addons/XPIProvider.jsm :: loadExtensionState :: line 1554"  data: no] Stack trace: loadExtensionState()@resource://gre/modules/addons/XPIProvider.jsm:1554 < getInstallState()@resource://gre/modules/addons/XPIProvider.jsm:1589 < checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:3109 < startup()@resource://gre/modules/addons/XPIProvider.jsm:2188 < callProvider()@resource://gre/modules/AddonManager.jsm:269 < _startProvider()@resource://gre/modules/AddonManager.jsm:739 < startup()@resource://gre/modules/AddonManager.jsm:906 < startup()@resource://gre/modules/AddonManager.jsm:3090 < observe()@jar:file:///C:/Program%20Files/Mozilla%20Firefox/omni.ja!/components/addonManager.js:65
+1513174328871	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\user\AppData\Local\openvr\openvrpaths.vrpath
+[Child 800] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1513174334529	Marionette	INFO	Listening on port 50656
+1513174335641	Marionette	WARN	TLS certificate errors will be ignored for this session
+1513174335747	Marionette	DEBUG	Register listener.js for window 4294967297
+1513174336288	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1513174336653	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1513174336653	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+Unable to read VR Path Registry from C:\Users\user\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: https://client.triggmine.com.ua/signup line 1 > eval, line 1: ReferenceError: _kmq is not defined
+1513174343560	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://client.triggmine.com.ua/signup"
+1513174345478	Marionette	DEBUG	Received DOM event "pageshow" for "https://client.triggmine.com.ua/signup"
+Unable to read VR Path Registry from C:\Users\user\AppData\Local\openvr\openvrpaths.vrpath
+[Parent 9544] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+

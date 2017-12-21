@@ -37,12 +37,14 @@ class LoginPage(Page):
     def click_login_button(self):
         self.click(LoginPageLocators.SUBMIT)
 
+    def click_link_forgot_password(self):
+        self.click(LoginPageLocators.LINK_FORGOT_PASSWORD)
+
     def login_in(self, email, password):
         self.enter_email(email)
         self.enter_password(password)
         self.click_login_button()
         self.driver.implicitly_wait(10)
-        self.wait(SetupPageLocators.H2_TITLE)
 
     def open_some_page(self):
         self.open_page('http://google.com')
@@ -50,3 +52,5 @@ class LoginPage(Page):
         self.click(SetupPageLocators.GOOGLE)
         self.open_page('')
 
+    def is_login_button(self):
+        return self.is_displayed(LoginPageLocators.SUBMIT)

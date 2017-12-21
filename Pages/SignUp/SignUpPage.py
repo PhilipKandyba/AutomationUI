@@ -4,6 +4,7 @@ from Pages.SignUp.SignupPageLocators import SignUpPageLocators
 from Pages.SignUp.SignupPageLocators import select_industry
 from Pages.SignUp.SignupPageLocators import selected_industry
 
+
 class SignUpPage(Page):
     def open_signup_page(self):
         self.open_page(URL.SIGNUP_PAGE)
@@ -15,12 +16,23 @@ class SignUpPage(Page):
         return self.is_displayed(SignUpPageLocators.EMAIL_FIELD_REQUIRED_MASSAGE)
 
     def is_password_field_required_massage(self):
-        return self.is_displayed(SignUpPageLocators.PASSWORD_FIELD_REQUIRED_MASSAGE)
+        return self.is_displayed(SignUpPageLocators.PASSWORD_FIELD_ERROR_MASSAGE)
 
     def is_first_name_field_required_massage(self):
-        return self.is_displayed(SignUpPageLocators.FIRST_NAME_FIELD_REQUIRED_MASSAGE)
+        return self.is_displayed(SignUpPageLocators.FIRST_NAME_FIELD_ERROR_MASSAGE)
+
+    def is_sign_up_button(self):
+        return self.is_displayed(SignUpPageLocators.CONFIRMATION_BUTTON)
+
+    def text_first_name_field_error_massage(self):
+        return self.get_text(SignUpPageLocators.FIRST_NAME_FIELD_ERROR_MASSAGE)
+
+    def text_password_field_error_massage(self):
+        return self.get_text(SignUpPageLocators.PASSWORD_FIELD_ERROR_MASSAGE)
 
     def click_signup_button(self):
+        import time
+        time.sleep(1)
         self.click(SignUpPageLocators.CONFIRMATION_BUTTON)
 
     def is_all_required_massage(self):
@@ -44,10 +56,42 @@ class SignUpPage(Page):
 
     def chose_industry(self, industry_name):
         self.click(SignUpPageLocators.INDUSTRY_SELECT_BUTTON)
-        return self.click(select_industry(industry_name))
+        self.implicitly_wait(10)
+        self.click(select_industry(industry_name))
 
     def is_selected_industry(self, industry_name):
         return self.is_displayed(selected_industry(industry_name))
 
+    def text_of_notification(self):
+        return self.get_text(SignUpPageLocators.ERROR_NOTIFICATION)
 
+    def fill_the_form(self, shop, email, name, password, industry):
+        self.send_keys_shop_url_field(shop)
+        self.send_keys_email_field(email)
+        self.send_keys_first_name_field(name)
+        self.send_keys_password(password)
+        self.chose_industry(industry)
+
+    def click_terms_of_use(self):
+        self.click(SignUpPageLocators.LINK_TERMS_OF_USE)
+
+    def click_privacy_policy(self):
+        self.click(SignUpPageLocators.LINK_PRIVACY_POLICY)
+
+    def text_terms_of_use_header(self):
+        self.switch_to_open_window()
+        return self.get_text(SignUpPageLocators.HEADER_TERMS_OF_USE)
+
+    def text_privacy_policy_header(self):
+        self.switch_to_open_window()
+        return self.get_text(SignUpPageLocators.HEADER_PRIVACY_POLICY)
+
+    def check_industry_list(self, ind):
+        for i in ind:
+            try:
+                print(i)
+                self.chose_industry(i)
+                assert self.is_selected_industry(i)
+            except:
+                raise Exception('Industry ' + i + ' not found')
 

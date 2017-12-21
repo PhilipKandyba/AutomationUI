@@ -1,7 +1,5 @@
 {
-  "test_LoginPage.py::test_login_in[chrome]": true,
-  "test_LoginPage.py::test_user_not_confirm_email[chrome]": true,
-  "test_suit.py::test_login_in[chrome]": true,
-  "test_suit.py::test_login_in[firefox]": true,
-  "test_suit.py::test_open[chrome]": true
+  "test_SignUp.py::test_check_img_link[chrome]": true,
+  "test_SignUp.py::test_check_login_link[chrome]": true,
+  "test_SignUp.py::test_check_privacy_policy[chrome]": true
 }

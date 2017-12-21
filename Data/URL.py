@@ -1,3 +1,5 @@
-base_page = 'https://client.triggmine.com'
+base_page_test = 'https://client.triggmine.com.ua'
+base_page_prod = 'https://client.triggmine.com'
 LOGIN_PAGE = '/login'
 SIGNUP_PAGE = '/signup'
+TRIGGMINE_LENDING = 'http://www.triggmine.com/smart-ecommerce-marketing'
