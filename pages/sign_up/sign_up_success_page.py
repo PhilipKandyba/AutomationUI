@@ -1,6 +1,6 @@
-from Base import Page
-from Pages.SignUp.SignUpSuccessPageLocators import SignUpSuccessPageLocators
-from Pages.SignUp.SignUpSuccessPageLocators import SignUpConfirmPageLocators
+from base import Page
+from pages.sign_up.sign_up_success_page_locators import SignUpSuccessPageLocators
+from pages.sign_up.sign_up_success_page_locators import SignUpConfirmPageLocators
 
 
 class SingUpSuccessPage(Page):

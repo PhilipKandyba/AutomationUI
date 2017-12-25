@@ -19,5 +19,6 @@
   "Test/test_SignUp.py::test_password_url_required_massage[ie]": true,
   "Test/test_SignUp.py::test_select_industry[chrome]": true,
   "Test/test_SignUp.py::test_shop_url_required_massage[ie]": true,
-  "Test/test_SignUp.py::test_wrong_first_name[ie]": true
+  "Test/test_SignUp.py::test_wrong_first_name[ie]": true,
+  "Test/test__sign_up.py": true
 }

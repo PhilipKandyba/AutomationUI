@@ -1,13 +1,13 @@
-from Data import URL
-from Pages.Login.LoginPage import LoginPage
-from Pages.SignUp.SignUpPage import SignUpPage
-from Pages.Header.HeaderElement import HeaderElement
-from Pages.Dashboard.DashboardPage import DashboardPage
-from Pages.RessetPasword.RessetPasswordPage import ResetPasswordPage
-from Data.Users import REAL_USER_EMAIL, NEW_USER_PASSWORD, UNCONFIRMED_USER_EMAIL
+from data import url
+from pages.login.login_page import LoginPage
+from pages.sign_up.sign_up_page import SignUpPage
+from pages.header.header_element import HeaderElement
+from pages.dashboard.dashboard_page import DashboardPage
+from pages.resset_pasword.resset_password_page import ResetPasswordPage
+from data.users import REAL_USER_EMAIL, NEW_USER_PASSWORD, UNCONFIRMED_USER_EMAIL
 
 
-# Login in
+# login in
 def test_login_in(driver):
     login = LoginPage(driver)
     dashboard = DashboardPage(driver)
@@ -110,7 +110,7 @@ def test_check_img_link(driver):
     header = HeaderElement(driver)
     login.open_login_page()
     header.click_logo()
-    assert login.current_url() == URL.TRIGGMINE_LENDING
+    assert login.current_url() == url.TRIGGMINE_LENDING
 
 
 # Check link "Reset password"

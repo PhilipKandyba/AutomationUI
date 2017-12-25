@@ -1,13 +1,13 @@
-from Base import Page
-from Data import URL
-from Pages.SignUp.SignupPageLocators import SignUpPageLocators
-from Pages.SignUp.SignupPageLocators import select_industry
-from Pages.SignUp.SignupPageLocators import selected_industry
+from base import Page
+from data import url
+from pages.sign_up.sign_up_page_locators import SignUpPageLocators
+from pages.sign_up.sign_up_page_locators import select_industry
+from pages.sign_up.sign_up_page_locators import selected_industry
 
 
 class SignUpPage(Page):
     def open_signup_page(self):
-        self.open_page(URL.SIGNUP_PAGE)
+        self.open_page(url.SIGNUP_PAGE)
 
     def is_shop_url_field_required_massage(self):
         return self.is_displayed(SignUpPageLocators.SHOP_URL_FIELD_REQUIRED_MASSAGE)

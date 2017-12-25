@@ -1,7 +1,7 @@
 import requests
 import selenium.webdriver.support.expected_conditions as ec
 from selenium.webdriver.support.ui import WebDriverWait
-from Data.URL import base_page_test
+from data.url import base_page_test
 
 
 class Page:

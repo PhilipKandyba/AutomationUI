@@ -1,5 +1,5 @@
-from Base import Page
-from Pages.Header.HeaderElementLocators import HeaderElementLocators
+from base import Page
+from pages.header.header_element_locators import HeaderElementLocators
 
 
 class HeaderElement(Page):

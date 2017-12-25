@@ -1,5 +1,5 @@
-from Base import Page
-from Pages.Dashboard.DashboardPageLocators import DashboardPageLocators
+from base import Page
+from pages.dashboard.dashboard_page_locators import DashboardPageLocators
 
 
 class DashboardPage(Page):

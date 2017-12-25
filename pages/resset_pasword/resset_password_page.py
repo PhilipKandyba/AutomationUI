@@ -1,5 +1,5 @@
-from Base import Page
-from Pages.RessetPasword.ResetPasswordPageLocators import ResetPasswordPageLocators
+from base import Page
+from pages.resset_pasword.reset_password_page_locators import ResetPasswordPageLocators
 
 
 class ResetPasswordPage(Page):

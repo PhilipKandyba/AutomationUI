@@ -1,6 +1,6 @@
-from Base import Page
-from Pages.Login.LoginPageLocators import LoginPageLocators
-from Pages.Setup.SetupPageLocators import SetupPageLocators
+from base import Page
+from pages.login.login_page_locators import LoginPageLocators
+from pages.setup.setup_page_locators import SetupPageLocators
 from selenium.webdriver.common.by import By
 
 

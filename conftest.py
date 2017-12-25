@@ -1,6 +1,6 @@
 ﻿import pytest
 from selenium import webdriver
-from Data.URL import base_page_test
+from data.url import base_page_test
 import requests
 
 browsers = {

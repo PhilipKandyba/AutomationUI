@@ -1,12 +1,12 @@
-from Base import Page
-from Data import URL
-from Pages.Login.LoginPageLocators import LoginPageLocators
-from Pages.Setup.SetupPageLocators import SetupPageLocators
+from base import Page
+from data import url
+from pages.login.login_page_locators import LoginPageLocators
+from pages.setup.setup_page_locators import SetupPageLocators
 
 
 class LoginPage(Page):
     def open_login_page(self):
-        self.open_page(URL.LOGIN_PAGE)
+        self.open_page(url.LOGIN_PAGE)
 
     def is_notification_from_email_field(self):
         return self.is_displayed(LoginPageLocators.NOTIFICATION_EMPTY_EMAIL_FIELD)

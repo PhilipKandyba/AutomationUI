@@ -1,5 +1,3 @@
 {
-  "test_SignUp.py::test_check_img_link[chrome]": true,
-  "test_SignUp.py::test_check_login_link[chrome]": true,
-  "test_SignUp.py::test_check_privacy_policy[chrome]": true
+  "test_SignUp.py::test_check_industries[chrome]": true
 }
