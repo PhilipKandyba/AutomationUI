@@ -31,8 +31,8 @@ class SignUpPage(Page):
         return self.get_text(SignUpPageLocators.PASSWORD_FIELD_ERROR_MASSAGE)
 
     def click_signup_button(self):
-        import time
-        time.sleep(1)
+        # import time
+        # time.sleep(1)
         self.click(SignUpPageLocators.CONFIRMATION_BUTTON)
 
     def is_all_required_massage(self):

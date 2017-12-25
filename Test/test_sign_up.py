@@ -1,19 +1,19 @@
 import pytest
-from Pages.Login.LoginPage import LoginPage
-from Pages.SignUp.SignUpPage import SignUpPage
-from Pages.Header.HeaderElement import HeaderElement
-from Pages.SignUp.SignUpSuccessPage import SingUpSuccessPage
-from Data.Users import REAL_USER_EMAIL as EMAIL
-from Data.Users import REAL_USER_PASSWORD as PASSWORD
-from Data.Users import REAL_USER_FIRST_NAME as NAME
-from Data.Users import TEST_WEB_SHOP_URL as SHOP
-from Data.Users import NEW_USER_EMAIL as NEW_EMAIL
-from Data.Users import NEW_USER_PASSWORD as NEW_PASSWORD
-from Data.Users import NEW_USER_FIRST_NAME as NEW_NAME
-from Data.Users import UNCONFIRMED_USER_EMAIL as UNCONFIRMED_EMAIL
-from Data.Industry import INDUSTRY
-from Tools.CheckEmail import check_email
-from Data import URL
+from pages.login.login_page import LoginPage
+from pages.sign_up.sign_up_page import SignUpPage
+from pages.header.header_element import HeaderElement
+from pages.sign_up.sign_up_success_page import SingUpSuccessPage
+from data.users import REAL_USER_EMAIL as EMAIL
+from data.users import REAL_USER_PASSWORD as PASSWORD
+from data.users import REAL_USER_FIRST_NAME as NAME
+from data.users import TEST_WEB_SHOP_URL as SHOP
+from data.users import NEW_USER_EMAIL as NEW_EMAIL
+from data.users import NEW_USER_PASSWORD as NEW_PASSWORD
+from data.users import NEW_USER_FIRST_NAME as NEW_NAME
+from data.users import UNCONFIRMED_USER_EMAIL as UNCONFIRMED_EMAIL
+from data.industry import INDUSTRY
+from Tools.check_email import check_email
+from data import url
 
 
 # All fields is empty. Check massage "Required"
@@ -142,7 +142,7 @@ def test_check_privacy_policy(driver):
     assert sign_up.text_privacy_policy_header() == 'Privacy Policy'
 
 
-# Check link "Login"
+# Check link "login"
 def test_check_login_link(driver):
     sign_up = SignUpPage(driver)
     login = LoginPage(driver)
@@ -158,4 +158,4 @@ def test_check_img_link(driver):
     header = HeaderElement(driver)
     sign_up.open_signup_page()
     header.click_logo()
-    assert sign_up.current_url() == URL.TRIGGMINE_LENDING
+    assert sign_up.current_url() == url.TRIGGMINE_LENDING
