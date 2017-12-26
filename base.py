@@ -8,14 +8,15 @@ class Page:
     def __init__(self, driver):
         self.driver = driver
         driver.maximize_window()
+        driver.implicitly_wait(10)
 
     def find_element(self, locator):
         self.driver.implicitly_wait(10)
         return self.driver.find_element(locator[0], locator[1])
 
     def is_displayed(self, locator):
-        self.driver.implicitly_wait(50)
-        return self.driver.find_element(locator[0], locator[1]).is_displayed()
+        return WebDriverWait(self.driver, 10).until(ec.visibility_of_element_located
+                                                    ((locator[0], locator[1]))).is_displayed()
 
     def send_keys(self, locator, text):
         self.driver.find_element(locator[0], locator[1]).clear()
@@ -30,7 +31,7 @@ class Page:
             self.driver.get(base_page + url)
 
     def click(self, locator):
-        WebDriverWait(self.driver, 15).until(ec.visibility_of_element_located((locator[0], locator[1]))).click()
+        WebDriverWait(self.driver, 30).until(ec.visibility_of_element_located((locator[0], locator[1]))).click()
 
     def wait(self, locator):
         WebDriverWait(self.driver, 15).until(ec.visibility_of_element_located(locator))
@@ -42,11 +43,14 @@ class Page:
         self.driver.get(url)
 
     def implicitly_wait(self, second):
-        self.driver.implicitly_wait(second)
+        return self.driver.implicitly_wait(second)
 
     def switch_to_open_window(self):
         self.driver.switch_to.window(self.driver.window_handles[-1])
 
     def current_url(self):
-        print(self.driver.current_url)
-        return str(self.driver.current_url)
+        return self.driver.current_url
+
+    def switch_to_frame(self, locator):
+        iframe = self.driver.find_element(locator[0], locator[1])
+        self.driver.switch_to_frame(iframe)

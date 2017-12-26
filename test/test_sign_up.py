@@ -16,7 +16,7 @@ from tools.check_email import check_email
 from data import url
 
 
-# All fields is empty. Check massage "Required"
+# All fields is empty. Check massages "Required"
 def test_all_required_massage_is_displayed(driver):
     sign_up = SignUpPage(driver)
     sign_up.open_signup_page()
@@ -77,6 +77,7 @@ def test_wrong_first_name(driver):
 
 
 # Presence of all industries.
+@pytest.mark.skip
 def test_check_industries(driver):
     sign_up = SignUpPage(driver)
     sign_up.open_signup_page()
@@ -111,7 +112,7 @@ def test_new_registration(driver):
 def test_registration_on_unconfirmed_email(driver):
     sign_up = SignUpPage(driver)
     sign_up.open_signup_page()
-    sign_up.fill_the_form(SHOP, UNCONFIRMED_EMAIL, NEW_NAME, NEW_PASSWORD, INDUSTRY[5])
+    sign_up.fill_the_form(SHOP, UNCONFIRMED_EMAIL, NEW_NAME, NEW_PASSWORD, INDUSTRY[1])
     sign_up.click_signup_button()
     assert sign_up.text_of_notification() == "Email " + UNCONFIRMED_EMAIL + " isn't confirmed. Please check your " \
                                                                             "mailbox for email validation"
@@ -121,7 +122,7 @@ def test_registration_on_unconfirmed_email(driver):
 def test_short_password(driver):
     sign_up = SignUpPage(driver)
     sign_up.open_signup_page()
-    sign_up.fill_the_form(SHOP, NEW_EMAIL, NEW_NAME, '123', INDUSTRY[5])
+    sign_up.fill_the_form(SHOP, NEW_EMAIL, NEW_NAME, '123', INDUSTRY[1])
     sign_up.click_signup_button()
     assert sign_up.text_password_field_error_massage() == 'Please type another password. Min length is 6'
 

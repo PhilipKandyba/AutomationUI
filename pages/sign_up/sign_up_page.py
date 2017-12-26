@@ -13,7 +13,7 @@ class SignUpPage(Page):
         return self.is_displayed(SignUpPageLocators.SHOP_URL_FIELD_REQUIRED_MASSAGE)
 
     def is_email_field_required_massage(self):
-        return self.is_displayed(SignUpPageLocators.EMAIL_FIELD_REQUIRED_MASSAGE)
+        return self.is_displayed(SignUpPageLocators.EMAIL_FIELD_ERROR_MASSAGE)
 
     def is_password_field_required_massage(self):
         return self.is_displayed(SignUpPageLocators.PASSWORD_FIELD_ERROR_MASSAGE)

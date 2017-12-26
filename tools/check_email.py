@@ -7,7 +7,7 @@ import time
 def check_email(sub):
     time.sleep(10)
     mail = imaplib.IMAP4_SSL('imap.gmail.com')
-    mail.login('***', '***')
+    mail.login('philip.kanduba@gmail.com', 'filosof0955567051')
     mail.select("inbox")
     for i in range(30):
         try:

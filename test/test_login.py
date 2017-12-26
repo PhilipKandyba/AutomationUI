@@ -121,3 +121,10 @@ def test_check_reset_password_link(driver):
     login.click_link_forgot_password()
     assert password_reset.is_reset_password_page_header()
 
+
+def test_check_intercom_chat(driver):
+    login = LoginPage(driver)
+    dashboard = DashboardPage(driver)
+    login.open_login_page()
+    login.login_in(REAL_USER_EMAIL, NEW_USER_PASSWORD)
+    assert dashboard.is_intercom_frame()
