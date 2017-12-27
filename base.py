@@ -33,8 +33,8 @@ class Page:
     def click(self, locator):
         WebDriverWait(self.driver, 30).until(ec.visibility_of_element_located((locator[0], locator[1]))).click()
 
-    def wait(self, locator):
-        WebDriverWait(self.driver, 15).until(ec.visibility_of_element_located(locator))
+    def wait(self, second, locator):
+        WebDriverWait(self.driver, second).until(ec.visibility_of_element_located(locator))
 
     def get_text(self, locator):
         return WebDriverWait(self.driver, 15).until(ec.visibility_of_element_located((locator[0], locator[1]))).text
