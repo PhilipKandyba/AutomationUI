@@ -1,5 +1,6 @@
 from base import Page
 from data import url
+from tools.mongodb import mongodb_insert_user
 from pages.sign_up.sign_up_page_locators import SignUpPageLocators
 from pages.sign_up.sign_up_page_locators import select_industry
 from pages.sign_up.sign_up_page_locators import selected_industry
@@ -31,8 +32,6 @@ class SignUpPage(Page):
         return self.get_text(SignUpPageLocators.PASSWORD_FIELD_ERROR_MASSAGE)
 
     def click_signup_button(self):
-        # import time
-        # time.sleep(1)
         self.click(SignUpPageLocators.CONFIRMATION_BUTTON)
 
     def is_all_required_massage(self):
@@ -71,6 +70,11 @@ class SignUpPage(Page):
         self.send_keys_first_name_field(name)
         self.send_keys_password(password)
         self.chose_industry(industry)
+
+    def new_registration(self, shop, email, name, password, industry):
+        self.fill_the_form(shop, email, name, password, industry)
+        self.click_signup_button()
+        mongodb_insert_user(email, name, password, industry, shop)
 
     def click_terms_of_use(self):
         self.click(SignUpPageLocators.LINK_TERMS_OF_USE)

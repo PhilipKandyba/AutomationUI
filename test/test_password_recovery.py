@@ -1,3 +1,4 @@
+import datetime
 from tools.check_email import check_email
 from pages.login.login_page import LoginPage
 from pages.sign_up.sign_up_page import SignUpPage
@@ -65,5 +66,5 @@ def test_change_password(driver):
     password.send_keys_password_field(RESET_PASSWORD_USER_NEW_PASSWORD)
     password.click_reset_password_button()
     login.open_login_page()
-    login.login_in(RESET_PASSWORD_USER_EMAIL, RESET_PASSWORD_USER_NEW_PASSWORD + '1')
+    login.login_in(RESET_PASSWORD_USER_EMAIL, RESET_PASSWORD_USER_NEW_PASSWORD)
     assert dashboard.is_statistic_header()

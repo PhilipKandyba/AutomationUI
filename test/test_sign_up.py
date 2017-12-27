@@ -1,5 +1,6 @@
 import pytest
 from pages.login.login_page import LoginPage
+from pages.setup.setup_page import SetupPage
 from pages.sign_up.sign_up_page import SignUpPage
 from pages.header.header_element import HeaderElement
 from pages.sign_up.sign_up_success_page import SingUpSuccessPage
@@ -94,18 +95,19 @@ def test_existing_user(driver):
 
 
 # New registration.
-@pytest.mark.skip(reason='Skipping new registration')
-def test_new_registration(driver):
+# @pytest.mark.skip(reason='Skipping new registration')
+def test_new_registration(driver, mongodb):
     sign_up = SignUpPage(driver)
     login = LoginPage(driver)
+    setup = SetupPage(driver)
     sign_up_success = SingUpSuccessPage(driver)
     sign_up.open_signup_page()
-    sign_up.fill_the_form(SHOP, NEW_EMAIL, NEW_NAME, NEW_PASSWORD, INDUSTRY[1])
-    sign_up.click_signup_button()
+    sign_up.new_registration(SHOP, NEW_EMAIL, NEW_NAME, NEW_PASSWORD, INDUSTRY[1])
     sign_up.open_url(check_email('Activate'))
     sign_up_success.is_confirm_header()
     sign_up_success.click_go_to_account_button()
-    assert login.is_login_button()
+    login.login_in(NEW_EMAIL, NEW_PASSWORD)
+    assert setup.text_he_title() == 'You’ve successfully created account'
 
 
 # Registration with an unconfirmed email.

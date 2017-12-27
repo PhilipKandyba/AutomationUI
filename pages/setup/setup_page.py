@@ -7,3 +7,6 @@ from selenium.webdriver.common.by import By
 class SetupPage(Page):
     def is_he_title(self):
         return self.is_displayed(SetupPageLocators.H2_TITLE)
+
+    def text_he_title(self):
+        return self.get_text(SetupPageLocators.H2_TITLE)

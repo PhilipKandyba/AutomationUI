@@ -5,7 +5,7 @@ import requests
 
 browsers = {
     'chrome': webdriver.Chrome,
-    'firefox': webdriver.Firefox,
+    # 'firefox': webdriver.Firefox,
     # 'ie': webdriver.Ie
 }
 
@@ -15,3 +15,4 @@ def driver(request):
     browser = browsers[request.param]()
     yield browser
     browser.quit()
+

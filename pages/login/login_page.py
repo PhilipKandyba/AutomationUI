@@ -44,7 +44,7 @@ class LoginPage(Page):
         self.enter_email(email)
         self.enter_password(password)
         self.click_login_button()
-        self.driver.implicitly_wait(10)
+        self.implicitly_wait(700)
 
     def open_some_page(self):
         self.open_page('http://google.com')
