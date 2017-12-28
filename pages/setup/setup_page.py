@@ -1,12 +1,43 @@
 from base import Page
-from pages.login.login_page_locators import LoginPageLocators
+from data import url
+from pages.setup.setup_page_locators import select_cms
 from pages.setup.setup_page_locators import SetupPageLocators
-from selenium.webdriver.common.by import By
 
 
 class SetupPage(Page):
     def is_he_title(self):
         return self.is_displayed(SetupPageLocators.H2_TITLE)
 
+    def is_popup_title(self):
+        try:
+            return self.is_displayed(SetupPageLocators.SIGN_UP_POPUP_TITLE)
+        finally:
+            self.click_sign_up_popup_button()
+
     def text_he_title(self):
         return self.get_text(SetupPageLocators.H2_TITLE)
+
+    def click_sign_up_next_step_button(self):
+        self.click(SetupPageLocators.SIGN_UP_NEXT_STEP_BUTTON)
+
+    def click_sign_up_popup_button(self):
+        self.click(SetupPageLocators.SIGN_UP_POPUP_BUTTON)
+
+    def click_sign_up_settings_link(self):
+        self.click(SetupPageLocators.SIGN_UP_SETTINGS_LINK)
+
+    def click_integration_open_cms_list(self):
+        self.click(SetupPageLocators.INTEGRATION_OPEN_CMS_LIST)
+
+    def choose_cms(self, name):
+        self.click_integration_open_cms_list()
+        self.click(select_cms(name))
+
+    def open_setup_sign_up_page(self):
+        self.open_page(url.SETUP_SIGN_UP)
+
+    def open_setup_integration_page(self):
+        self.open_page(url.SETUP_INTEGRATION)
+
+    def is_integration_api_url_label( self ):
+        return self.is_displayed(SetupPageLocators.INTEGRATION_API_ULR_LABEL)

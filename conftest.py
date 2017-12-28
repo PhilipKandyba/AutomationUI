@@ -1,7 +1,7 @@
 ﻿import pytest
 from selenium import webdriver
-from data.url import base_page_test
-import requests
+from data.cms import cms
+from tools.mongodb import check_mongodb_connection
 
 browsers = {
     'chrome': webdriver.Chrome,
@@ -15,4 +15,10 @@ def driver(request):
     browser = browsers[request.param]()
     yield browser
     browser.quit()
+
+
+@pytest.fixture(autouse=True)
+def mongodb_check():
+    check_mongodb_connection()
+
 

@@ -1,7 +1,7 @@
 from base import Page
 from data import url
 from pages.login.login_page_locators import LoginPageLocators
-from pages.setup.setup_page_locators import SetupPageLocators
+from pages.header.header_element_locators import HeaderElementLocators
 
 
 class LoginPage(Page):
@@ -44,13 +44,7 @@ class LoginPage(Page):
         self.enter_email(email)
         self.enter_password(password)
         self.click_login_button()
-        self.implicitly_wait(700)
-
-    def open_some_page(self):
-        self.open_page('http://google.com')
-        self.send_keys(SetupPageLocators.TYPE, 'qerqwe')
-        self.click(SetupPageLocators.GOOGLE)
-        self.open_page('')
+        self.wait(500, HeaderElementLocators.LOGO_ICON)
 
     def is_login_button(self):
         return self.is_displayed(LoginPageLocators.SUBMIT)

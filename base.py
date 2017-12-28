@@ -12,10 +12,10 @@ class Page:
 
     def find_element(self, locator):
         self.driver.implicitly_wait(10)
-        return self.driver.find_element(locator[0], locator[1])
+        self.driver.find_element(locator[0], locator[1])
 
     def is_displayed(self, locator):
-        return WebDriverWait(self.driver, 10).until(ec.visibility_of_element_located
+        return WebDriverWait(self.driver, 30).until(ec.visibility_of_element_located
                                                     ((locator[0], locator[1]))).is_displayed()
 
     def send_keys(self, locator, text):
@@ -34,7 +34,7 @@ class Page:
         WebDriverWait(self.driver, 30).until(ec.visibility_of_element_located((locator[0], locator[1]))).click()
 
     def wait(self, second, locator):
-        WebDriverWait(self.driver, second).until(ec.visibility_of_element_located(locator))
+        WebDriverWait(self.driver, second).until(ec.visibility_of_element_located((locator[0], locator[1])))
 
     def get_text(self, locator):
         return WebDriverWait(self.driver, 15).until(ec.visibility_of_element_located((locator[0], locator[1]))).text
