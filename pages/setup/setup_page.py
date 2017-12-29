@@ -33,9 +33,18 @@ class SetupPage(Page):
         self.click(SetupPageLocators.INTEGRATION_DOWNLOAD_PLUGIN_BUTTON)
         self.switch_to_open_window()
 
+    def click_integration_send_instruction_button(self):
+        self.click(SetupPageLocators.INTEGRATION_SEND_INSTRUCTION_BUTTON)
+
     def click_integration_watch_tutorial_link(self):
         self.click(SetupPageLocators.INTEGRATION_WATCH_TUTORIAL_LINK)
         self.switch_to_open_window()
+
+    def click_integration_send_instruction_to_developer_button(self):
+        self.click(SetupPageLocators.INTEGRATION_SEND_INSTRUCTION_FORM_SEND_BUTTON)
+
+    def enter_developer_email(self, email):
+        self.send_keys(SetupPageLocators.INTEGRATION_SEND_INSTRUCTION_FORM_INPUT, email)
 
     def choose_cms(self, name):
         self.click_integration_open_cms_list()

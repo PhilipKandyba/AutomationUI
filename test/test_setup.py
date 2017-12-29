@@ -2,8 +2,10 @@ import pytest
 from data.cms import cms_tutorial_link, cms_market_place
 from pages.setup.setup_page import SetupPage
 from pages.login.login_page import LoginPage
+from tools.check_email import check_email
 from tools.mongodb import mongodb_last_user
 from pages.account_settings.account_settings_page import AccountSettings
+from data.users import REAL_USER_EMAIL
 
 
 def test_trial_modal(driver):
@@ -58,5 +60,21 @@ def test_check_cms_market(driver, cms_name, market_link):
     setup.choose_cms(cms_name)
     setup.click_integration_download_plugin_button()
     assert setup.current_url() == market_link
+
+
+@pytest.mark.parametrize('cms_name,doc_link', cms_tutorial_link)
+def test_send_instruction(driver, cms_name, doc_link):
+    setup = SetupPage(driver)
+    login = LoginPage(driver)
+    login.open_login_page()
+    login.login_in(mongodb_last_user(), '123456')
+    setup.open_setup_integration_page()
+    setup.choose_cms(cms_name)
+    setup.click_integration_send_instruction_button()
+    setup.enter_developer_email(REAL_USER_EMAIL)
+    setup.click_integration_send_instruction_to_developer_button()
+    setup.open_url(check_email('TriggMine integration instruction'))
+    assert setup.current_url() == doc_link
+
 
 

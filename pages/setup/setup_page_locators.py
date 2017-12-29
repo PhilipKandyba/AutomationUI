@@ -16,3 +16,6 @@ class SetupPageLocators(object):
     INTEGRATION_OPEN_CMS_LIST = (By.XPATH, '//div[contains(text(), "My website CMS is")]//i')
     INTEGRATION_WATCH_TUTORIAL_LINK = (By.XPATH, '//span[contains(string(), "Watch tutorial")]')
     INTEGRATION_DOWNLOAD_PLUGIN_BUTTON =(By.XPATH, '//button[contains(string(), "Download the plugin")]')
+    INTEGRATION_SEND_INSTRUCTION_BUTTON =(By.XPATH, '//button[contains(string(), "Send instruction")]')
+    INTEGRATION_SEND_INSTRUCTION_FORM_INPUT = (By.ID, 'idundefined')
+    INTEGRATION_SEND_INSTRUCTION_FORM_SEND_BUTTON = (By.XPATH, '//small/../../div//button[contains(string(), "Send")]')
