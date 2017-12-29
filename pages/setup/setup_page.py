@@ -29,6 +29,14 @@ class SetupPage(Page):
     def click_integration_open_cms_list(self):
         self.click(SetupPageLocators.INTEGRATION_OPEN_CMS_LIST)
 
+    def click_integration_download_plugin_button(self):
+        self.click(SetupPageLocators.INTEGRATION_DOWNLOAD_PLUGIN_BUTTON)
+        self.switch_to_open_window()
+
+    def click_integration_watch_tutorial_link(self):
+        self.click(SetupPageLocators.INTEGRATION_WATCH_TUTORIAL_LINK)
+        self.switch_to_open_window()
+
     def choose_cms(self, name):
         self.click_integration_open_cms_list()
         self.click(select_cms(name))

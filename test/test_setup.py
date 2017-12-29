@@ -1,5 +1,5 @@
 import pytest
-from data.cms import cms
+from data.cms import cms_tutorial_link, cms_market_place
 from pages.setup.setup_page import SetupPage
 from pages.login.login_page import LoginPage
 from tools.mongodb import mongodb_last_user
@@ -36,11 +36,27 @@ def test_from_setup_to_integration(driver):
     assert setup.is_integration_api_url_label()
 
 
-@pytest.mark.parametrize('cms', cms)
-def test_check_cms_market(driver):
+@pytest.mark.parametrize('cms_name,doc_link', cms_tutorial_link)
+def test_check_cms_market(driver, cms_name, doc_link):
     setup = SetupPage(driver)
     login = LoginPage(driver)
     login.open_login_page()
     login.login_in(mongodb_last_user(), '123456')
     setup.open_setup_integration_page()
-    setup.choose_cms(cms)
+    setup.choose_cms(cms_name)
+    setup.click_integration_watch_tutorial_link()
+    assert setup.current_url() == doc_link
+
+
+@pytest.mark.parametrize('cms_name,market_link', cms_market_place)
+def test_check_cms_market(driver, cms_name, market_link):
+    setup = SetupPage(driver)
+    login = LoginPage(driver)
+    login.open_login_page()
+    login.login_in(mongodb_last_user(), '123456')
+    setup.open_setup_integration_page()
+    setup.choose_cms(cms_name)
+    setup.click_integration_download_plugin_button()
+    assert setup.current_url() == market_link
+
+

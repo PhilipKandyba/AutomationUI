@@ -1,6 +1,6 @@
 ﻿import pytest
 from selenium import webdriver
-from data.cms import cms
+from data.cms import cms_tutorial_link
 from tools.mongodb import check_mongodb_connection
 
 browsers = {

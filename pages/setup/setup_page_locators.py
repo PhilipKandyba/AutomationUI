@@ -13,4 +13,6 @@ class SetupPageLocators(object):
     SIGN_UP_SETTINGS_LINK = (By.XPATH, '//a[contains(@href,"/settings/account")]')
     SIGN_UP_NEXT_STEP_BUTTON = (By.XPATH, '//div/button')
     INTEGRATION_API_ULR_LABEL = (By.XPATH, '//label[contains(string(), "API URL")]')
-    INTEGRATION_OPEN_CMS_LIST = (By.CLASS_NAME, 'icon-arrow-down-bold')
+    INTEGRATION_OPEN_CMS_LIST = (By.XPATH, '//div[contains(text(), "My website CMS is")]//i')
+    INTEGRATION_WATCH_TUTORIAL_LINK = (By.XPATH, '//span[contains(string(), "Watch tutorial")]')
+    INTEGRATION_DOWNLOAD_PLUGIN_BUTTON =(By.XPATH, '//button[contains(string(), "Download the plugin")]')

@@ -49,7 +49,12 @@ class Page:
         self.driver.switch_to.window(self.driver.window_handles[-1])
 
     def current_url(self):
-        return self.driver.current_url
+        page = self.driver.current_url
+        response = requests.get(page)
+        if response.status_code != 200:
+            raise Exception('Page is not available, status code: ' + str(response.status_code))
+        else:
+            return self.driver.current_url
 
     def switch_to_frame(self, locator):
         iframe = self.driver.find_element(locator[0], locator[1])
