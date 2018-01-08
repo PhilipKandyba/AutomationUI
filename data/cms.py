@@ -17,6 +17,5 @@ cms_market_place = {
     ('Magento 2', 'https://marketplace.magento.com/triggmine-connector.html'),
     ('Prestashop 1.6', 'https://addons.prestashop.com/en/remarketing-shopping-cart-abandonment/25899-triggmine.html'),
     ('Prestashop 1.7', 'https://addons.prestashop.com/en/remarketing-shopping-cart-abandonment/25899-triggmine.html'),
-    ('Woocomerce 2.6', 'https://wordpress.org/plugins/triggmine-email-workflows-made-perfectly-easy/'),
-    ('Shopify', 'https://apps.shopify.com/triggmine-email-workflows-for-shopify')
+    ('Woocomerce 2.6', 'https://wordpress.org/plugins/triggmine-email-workflows-made-perfectly-easy/')
 }
