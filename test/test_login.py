@@ -69,7 +69,6 @@ def test_unregistered_user_valid_password(driver):
     login.enter_email('qwe_test@qwe.com')
     login.enter_password('123456')
     login.click_login_button()
-    assert login.is_form_notification()
     assert login.text_form_notification() == 'The user name or password is incorrect.'
 
 
