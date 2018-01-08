@@ -10,8 +10,8 @@ db = client.triggmine
 def check_mongodb_connection():
     try:
         client.server_info()
-    except ServerSelectionTimeoutError as err:
-        raise Exception(err)
+    except ServerSelectionTimeoutError:
+        raise Exception('Error connection to MongoDB')
 
 
 def mongodb_insert_user(email, name, password, industry, shop):
