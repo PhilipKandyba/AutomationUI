@@ -7,7 +7,7 @@ from pages.resset_pasword.resset_password_page import ResetPasswordPage
 from data.users import REAL_USER_EMAIL, NEW_USER_PASSWORD, UNCONFIRMED_USER_EMAIL
 
 
-# login in
+# Login in
 def test_login_in(driver):
     login = LoginPage(driver)
     dashboard = DashboardPage(driver)
@@ -32,6 +32,15 @@ def test_email_valid_password_empty(driver):
     login.enter_email('mail@em.com')
     login.click_login_button()
     assert login.is_notification_from_password_field()
+
+
+# Real email. Empty password field.
+def test_real_email_password_empty(driver):
+    login = LoginPage(driver)
+    login.open_login_page()
+    login.enter_email(REAL_USER_EMAIL)
+    login.click_login_button()
+    assert login.text_notification_from_password_field() == 'Required'
 
 
 # Not valid Email. Empty password field.
@@ -79,7 +88,6 @@ def test_user_not_confirm_email(driver):
     login.enter_email(UNCONFIRMED_USER_EMAIL)
     login.enter_password('123456')
     login.click_login_button()
-    assert login.is_form_notification()
     assert login.text_form_notification() == 'User have to confirm his email'
 
 
@@ -118,7 +126,7 @@ def test_check_reset_password_link(driver):
     password_reset = ResetPasswordPage(driver)
     login.open_login_page()
     login.click_link_forgot_password()
-    assert password_reset.is_reset_password_page_header()
+    assert password_reset.is_reset_password_button()
 
 
 def test_check_intercom_chat(driver):
