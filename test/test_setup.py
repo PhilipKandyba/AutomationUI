@@ -8,6 +8,7 @@ from pages.account_settings.account_settings_page import AccountSettings
 from data.users import REAL_USER_EMAIL
 
 
+# First entering to cabinet. Showing popup.
 def test_trial_modal(driver):
     setup = SetupPage(driver)
     login = LoginPage(driver)
@@ -17,6 +18,7 @@ def test_trial_modal(driver):
     assert setup.is_popup_title()
 
 
+# Check "Account setting" link.
 def test_check_account_setting_link(driver):
     setup = SetupPage(driver)
     login = LoginPage(driver)
@@ -28,6 +30,7 @@ def test_check_account_setting_link(driver):
     assert settings.is_save_changes_button()
 
 
+# Going from "Sign in" to "Integration"
 def test_from_setup_to_integration(driver):
     setup = SetupPage(driver)
     login = LoginPage(driver)
@@ -38,6 +41,7 @@ def test_from_setup_to_integration(driver):
     assert setup.is_integration_api_url_label()
 
 
+# Checking link of documentation for all plugins.
 @pytest.mark.parametrize('cms_name,doc_link', cms_tutorial_link)
 def test_check_cms_market(driver, cms_name, doc_link):
     setup = SetupPage(driver)
@@ -50,6 +54,7 @@ def test_check_cms_market(driver, cms_name, doc_link):
     assert setup.current_url() == doc_link
 
 
+# Checking link of market place for all plugins.
 @pytest.mark.parametrize('cms_name,market_link', cms_market_place)
 def test_check_cms_market(driver, cms_name, market_link):
     setup = SetupPage(driver)
@@ -62,6 +67,7 @@ def test_check_cms_market(driver, cms_name, market_link):
     assert setup.current_url() == market_link
 
 
+# Check instruction link on email for developer.
 @pytest.mark.parametrize('cms_name,doc_link', cms_tutorial_link)
 def test_send_instruction(driver, cms_name, doc_link):
     setup = SetupPage(driver)

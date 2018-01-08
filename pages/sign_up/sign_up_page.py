@@ -1,5 +1,6 @@
 from base import Page
 from data import url
+from data.industry import INDUSTRY
 from tools.mongodb import mongodb_insert_user
 from pages.sign_up.sign_up_page_locators import SignUpPageLocators
 from pages.sign_up.sign_up_page_locators import select_industry
@@ -11,7 +12,7 @@ class SignUpPage(Page):
         self.open_page(url.SIGNUP_PAGE)
 
     def is_shop_url_field_required_massage(self):
-        return self.is_displayed(SignUpPageLocators.SHOP_URL_FIELD_REQUIRED_MASSAGE)
+        return self.is_displayed(SignUpPageLocators.SHOP_URL_FIELD_ERROR_MASSAGE)
 
     def is_email_field_required_massage(self):
         return self.is_displayed(SignUpPageLocators.EMAIL_FIELD_ERROR_MASSAGE)
@@ -22,8 +23,17 @@ class SignUpPage(Page):
     def is_first_name_field_required_massage(self):
         return self.is_displayed(SignUpPageLocators.FIRST_NAME_FIELD_ERROR_MASSAGE)
 
+    def is_industry_field_required_massage(self):
+        return self.is_displayed(SignUpPageLocators.INDUSTRY_FIELD_ERROR_MASSAGE)
+
     def is_sign_up_button(self):
         return self.is_displayed(SignUpPageLocators.CONFIRMATION_BUTTON)
+
+    def text_shop_url_field_error_massage(self):
+        return self.get_text(SignUpPageLocators.SHOP_URL_FIELD_ERROR_MASSAGE)
+
+    def text_email_field_error_massage(self):
+        return self.get_text(SignUpPageLocators.EMAIL_FIELD_ERROR_MASSAGE)
 
     def text_first_name_field_error_massage(self):
         return self.get_text(SignUpPageLocators.FIRST_NAME_FIELD_ERROR_MASSAGE)
@@ -37,8 +47,9 @@ class SignUpPage(Page):
     def is_all_required_massage(self):
         self.click_signup_button()
         self.is_shop_url_field_required_massage()
-        self.is_email_field_required_massage()
+        self.is_industry_field_required_massage()
         self.is_first_name_field_required_massage()
+        self.is_email_field_required_massage()
         self.is_password_field_required_massage()
 
     def send_keys_shop_url_field(self, text):
@@ -64,7 +75,7 @@ class SignUpPage(Page):
     def text_of_notification(self):
         return self.get_text(SignUpPageLocators.ERROR_NOTIFICATION)
 
-    def fill_the_form(self, shop, email, name, password, industry):
+    def fill_the_form(self, shop, email, name, password, industry=INDUSTRY[1]):
         self.send_keys_shop_url_field(shop)
         self.send_keys_email_field(email)
         self.send_keys_first_name_field(name)

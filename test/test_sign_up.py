@@ -32,7 +32,7 @@ def test_shop_url_required_massage(driver):
     sign_up.send_keys_password('some_text')
     sign_up.send_keys_first_name_field('some_name')
     sign_up.click_signup_button()
-    assert sign_up.is_shop_url_field_required_massage()
+    assert sign_up.text_shop_url_field_error_massage() == 'Required'
 
 
 # Email. Massage: "Required"
@@ -43,7 +43,7 @@ def test_email_required_massage(driver):
     sign_up.send_keys_password('some_text')
     sign_up.send_keys_first_name_field('some_name')
     sign_up.click_signup_button()
-    assert sign_up.is_email_field_required_massage()
+    assert sign_up.text_email_field_error_massage() == 'Required'
 
 
 # Password. Massage: "Required"
@@ -54,7 +54,7 @@ def test_password_url_required_massage(driver):
     sign_up.send_keys_shop_url_field('some-url.com')
     sign_up.send_keys_first_name_field('some_name')
     sign_up.click_signup_button()
-    assert sign_up.is_password_field_required_massage()
+    assert sign_up.text_password_field_error_massage() == 'Required'
 
 
 # First name. Massage: "Required"
@@ -65,7 +65,7 @@ def test_first_name_url_required_massage(driver):
     sign_up.send_keys_shop_url_field('some-url.com')
     sign_up.send_keys_password('some_text')
     sign_up.click_signup_button()
-    assert sign_up.is_first_name_field_required_massage()
+    assert sign_up.text_first_name_field_error_massage() == 'Required'
 
 
 # First name. Massage: "Field Name can only match letters, "-" and spaces"

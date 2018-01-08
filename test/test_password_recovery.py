@@ -13,9 +13,10 @@ def test_empty_email_field(driver):
     password = ResetPasswordPage(driver)
     password.open_password_page()
     password.click_reset_password_button()
-    assert password.is_email_field_error_massage()
+    assert password.text_email_field() == "Required"
 
 
+# Incorrect email. Unacceptable symbols.
 def test_incorrect_email(driver):
     password = ResetPasswordPage(driver)
     password.open_password_page()
@@ -24,6 +25,7 @@ def test_incorrect_email(driver):
     assert password.text_email_field() == 'Invalid email address'
 
 
+# Not existing email.
 def test_not_existing_user(driver):
     password = ResetPasswordPage(driver)
     password.open_password_page()

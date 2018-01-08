@@ -4,7 +4,7 @@ from pages.resset_pasword.reset_password_page_locators import ResetPasswordPageL
 
 
 class ResetPasswordPage(Page):
-    def is_reset_password_button( self ):
+    def is_reset_password_button(self):
         return self.is_displayed(ResetPasswordPageLocators.RESET_PASSWORD_BUTTON)
 
     def open_password_page(self):
