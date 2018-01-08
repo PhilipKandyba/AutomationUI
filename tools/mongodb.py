@@ -15,6 +15,7 @@ def check_mongodb_connection():
 
 
 def mongodb_insert_user(email, name, password, industry, shop):
+    check_mongodb_connection()
     collection = db.users
     collection.save({
         "email": email,
