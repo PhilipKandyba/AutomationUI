@@ -4,8 +4,8 @@ from pages.resset_pasword.reset_password_page_locators import ResetPasswordPageL
 
 
 class ResetPasswordPage(Page):
-    def is_reset_password_page_header(self):
-        return self.is_displayed(ResetPasswordPageLocators.HEADER_RESET_PASSWORD)
+    def is_reset_password_button( self ):
+        return self.is_displayed(ResetPasswordPageLocators.RESET_PASSWORD_BUTTON)
 
     def open_password_page(self):
         self.open_page(url.RECOVERY_PASSWORD_PAGE)
