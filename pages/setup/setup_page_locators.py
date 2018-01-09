@@ -8,6 +8,7 @@ def select_cms(name):
 
 class SetupPageLocators(object):
     H2_TITLE = (By.XPATH, '//h2')
+    SETUP_NOTIFICATION_MASSAGE = (By.XPATH, '//i[@class="icon-attention"]/../..//p')
     SIGN_UP_POPUP_TITLE = (By.XPATH, '//div//button/../h3')
     SIGN_UP_POPUP_BUTTON = (By.XPATH, '//div/p/../button')
     SIGN_UP_SETTINGS_LINK = (By.XPATH, '//a[contains(@href,"/settings/account")]')
@@ -18,4 +19,8 @@ class SetupPageLocators(object):
     INTEGRATION_DOWNLOAD_PLUGIN_BUTTON =(By.XPATH, '//button[contains(string(), "Download the plugin")]')
     INTEGRATION_SEND_INSTRUCTION_BUTTON =(By.XPATH, '//button[contains(string(), "Send instruction")]')
     INTEGRATION_SEND_INSTRUCTION_FORM_INPUT = (By.ID, 'idundefined')
+    INTEGRATION_SEND_INSTRUCTION_FORM_ERROR_MASSAGE = (By.XPATH, '//input[@id="idundefined"]/../../span[2]/span')
     INTEGRATION_SEND_INSTRUCTION_FORM_SEND_BUTTON = (By.XPATH, '//small/../../div//button[contains(string(), "Send")]')
+    INTEGRATION_CMS_NAME_TUTORIAL_BLOCK = (By.XPATH, '//h3[contains(string(), "2")]/div')
+    INTEGRATION_CMS_NAME_CREDENTIAL_BLOCK = (By.XPATH, '//h3[contains(string(), "3")]/div')
+    INTEGRATION_API_URL_INPUT = (By.XPATH, '//label[contains(string(), "URL")]/..//input')

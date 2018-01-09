@@ -39,6 +39,10 @@ class Page:
     def get_text(self, locator):
         return WebDriverWait(self.driver, 15).until(ec.visibility_of_element_located((locator[0], locator[1]))).text
 
+    def get_value(self, locator):
+        return WebDriverWait(self.driver, 15).until(ec.visibility_of_element_located((
+            locator[0], locator[1]))).get_attribute('value')
+
     def open_url(self, url):
         self.driver.get(url)
 

@@ -1,6 +1,7 @@
 from base import Page
 from data import url
 from data.industry import INDUSTRY
+from data.users import NEW_USER_EMAIL as new_email
 from tools.mongodb import mongodb_insert_user
 from pages.sign_up.sign_up_page_locators import SignUpPageLocators
 from pages.sign_up.sign_up_page_locators import select_industry
@@ -75,7 +76,7 @@ class SignUpPage(Page):
     def text_of_notification(self):
         return self.get_text(SignUpPageLocators.ERROR_NOTIFICATION)
 
-    def fill_the_form(self, shop, email, name, password, industry=INDUSTRY[1]):
+    def fill_the_form(self, shop='test.com', industry=INDUSTRY[1], name='Bob', email=new_email, password='123456'):
         self.send_keys_shop_url_field(shop)
         self.send_keys_email_field(email)
         self.send_keys_first_name_field(name)
@@ -83,7 +84,7 @@ class SignUpPage(Page):
         self.chose_industry(industry)
 
     def new_registration(self, shop, email, name, password, industry):
-        self.fill_the_form(shop, email, name, password, industry)
+        self.fill_the_form(shop, industry, name, email, password)
         self.click_signup_button()
         mongodb_insert_user(email, name, password, industry, shop)
 

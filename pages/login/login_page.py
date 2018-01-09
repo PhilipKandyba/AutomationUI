@@ -1,5 +1,6 @@
 from base import Page
 from data import url
+from tools.mongodb import mongodb_last_user
 from pages.login.login_page_locators import LoginPageLocators
 from pages.header.header_element_locators import HeaderElementLocators
 
@@ -40,7 +41,7 @@ class LoginPage(Page):
     def click_link_forgot_password(self):
         self.click(LoginPageLocators.LINK_FORGOT_PASSWORD)
 
-    def login_in(self, email, password):
+    def login_in(self, email=mongodb_last_user(), password='123456'):
         self.enter_email(email)
         self.enter_password(password)
         self.click_login_button()

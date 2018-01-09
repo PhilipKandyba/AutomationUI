@@ -4,7 +4,7 @@ from pages.setup.setup_page import SetupPage
 from pages.sign_up.sign_up_page import SignUpPage
 from pages.header.header_element import HeaderElement
 from pages.sign_up.sign_up_success_page import SingUpSuccessPage
-from data.users import REAL_USER_EMAIL as EMAIL
+from data.users import REAL_USER_EMAIL
 from data.users import REAL_USER_PASSWORD as PASSWORD
 from data.users import REAL_USER_FIRST_NAME as NAME
 from data.users import TEST_WEB_SHOP_URL as SHOP
@@ -89,9 +89,9 @@ def test_check_industries(driver):
 def test_existing_user(driver):
     sign_up = SignUpPage(driver)
     sign_up.open_signup_page()
-    sign_up.fill_the_form(SHOP, EMAIL, NAME, PASSWORD, INDUSTRY[1])
+    sign_up.fill_the_form(email=REAL_USER_EMAIL)
     sign_up.click_signup_button()
-    assert sign_up.text_of_notification() == 'User with email ' + EMAIL + ' already exists!'
+    assert sign_up.text_of_notification() == 'User with email ' + REAL_USER_EMAIL + ' already exists!'
 
 
 # New registration.
@@ -115,22 +115,22 @@ def test_new_registration(driver):
 def test_registration_on_unconfirmed_email(driver):
     sign_up = SignUpPage(driver)
     sign_up.open_signup_page()
-    sign_up.fill_the_form(SHOP, UNCONFIRMED_EMAIL, NEW_NAME, NEW_PASSWORD, INDUSTRY[1])
+    sign_up.fill_the_form(email=UNCONFIRMED_EMAIL)
     sign_up.click_signup_button()
     assert sign_up.text_of_notification() == "Email " + UNCONFIRMED_EMAIL + " isn't confirmed. Please check your " \
                                                                             "mailbox for email validation"
 
 
-# User enter shot password (3 symbol)
+# User enter shot password (3 symbol).
 def test_short_password(driver):
     sign_up = SignUpPage(driver)
     sign_up.open_signup_page()
-    sign_up.fill_the_form(SHOP, NEW_EMAIL, NEW_NAME, '123', INDUSTRY[1])
+    sign_up.fill_the_form(password='123')
     sign_up.click_signup_button()
     assert sign_up.text_password_field_error_massage() == 'Please type another password. Min length is 6'
 
 
-# Check link "Terms of use"
+# Check link "Terms of use".
 def test_check_terms_of_use(driver):
     sign_up = SignUpPage(driver)
     sign_up.open_signup_page()
@@ -138,7 +138,7 @@ def test_check_terms_of_use(driver):
     assert sign_up.text_terms_of_use_header() == 'Terms of Use & Privacy Policy'
 
 
-# Check link "Privacy policy"
+# Check link "Privacy policy".
 def test_check_privacy_policy(driver):
     sign_up = SignUpPage(driver)
     sign_up.open_signup_page()
@@ -146,7 +146,7 @@ def test_check_privacy_policy(driver):
     assert sign_up.text_privacy_policy_header() == 'Privacy Policy'
 
 
-# Check link "login"
+# Check link "login".
 def test_check_login_link(driver):
     sign_up = SignUpPage(driver)
     login = LoginPage(driver)
@@ -156,10 +156,20 @@ def test_check_login_link(driver):
     assert login.is_login_button()
 
 
-# Check link on Logo
+# Check link on Logo.
 def test_check_img_link(driver):
     sign_up = SignUpPage(driver)
     header = HeaderElement(driver)
     sign_up.open_signup_page()
     header.click_logo()
     assert sign_up.current_url() == url.TRIGGMINE_LENDING
+
+
+# Invalid email address.
+def invalid_email_address(driver):
+    sign_up = SignUpPage(driver)
+    sign_up.open_signup_page()
+    sign_up.fill_the_form(email='qwe!#$%^&@gmail.com')
+    sign_up.click_signup_button()
+    assert sign_up.text_email_field_error_massage() == 'Invalid email address'
+
