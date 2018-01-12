@@ -36,6 +36,9 @@ class Page:
     def wait(self, second, locator):
         WebDriverWait(self.driver, second).until(ec.visibility_of_element_located((locator[0], locator[1])))
 
+    def wait_until_element_is_not_show(self, second, locator):
+        WebDriverWait(self.driver, second).until(ec.invisibility_of_element_located((locator[0], locator[1])))
+
     def get_text(self, locator):
         return WebDriverWait(self.driver, 15).until(ec.visibility_of_element_located((locator[0], locator[1]))).text
 
@@ -52,13 +55,25 @@ class Page:
     def switch_to_open_window(self):
         self.driver.switch_to.window(self.driver.window_handles[-1])
 
+    def close_first_windows(self):
+        self.driver.switch_to.window(self.driver.window_handles[0])
+        self.driver.close()
+
     def current_url(self):
-        page = self.driver.current_url
-        response = requests.get(page)
+        for i in range(100):
+            page = self.driver.current_url
+            if page == 'about:blank':
+                import time
+                time.sleep(0.05)
+                print(i)
+                continue
+            else:
+                break
+        response = requests.get(self.driver.current_url)
         if response.status_code != 200:
             raise Exception('Page is not available, status code: ' + str(response.status_code))
         else:
-            return self.driver.current_url
+            return page
 
     def switch_to_frame(self, locator):
         iframe = self.driver.find_element(locator[0], locator[1])

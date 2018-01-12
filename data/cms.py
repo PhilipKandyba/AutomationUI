@@ -1,13 +1,14 @@
 cms_tutorial_link = [
-    ('Magento 1.7', 'https://triggmine.freshdesk.com/support/solutions/folders/22000038240'),
-    ('Magento 1.8', 'https://triggmine.freshdesk.com/support/solutions/folders/22000038240'),
-    ('Magento 1.9', 'https://triggmine.freshdesk.com/support/solutions/folders/22000038240'),
-    ('Magento 2', 'https://triggmine.freshdesk.com/support/solutions/folders/22000164325'),
-    ('Prestashop 1.6', 'https://triggmine.freshdesk.com/support/solutions/folders/22000146553'),
-    ('Prestashop 1.7', 'https://triggmine.freshdesk.com/support/solutions/folders/22000146553'),
-    ('Woocomerce 2.6', 'https://triggmine.freshdesk.com/support/solutions/folders/22000161679'),
-    ('Shopify', 'https://triggmine.freshdesk.com/support/solutions/folders/22000164658'),
-    ('Other', 'https://triggmine.atlassian.net/wiki/spaces/DW/pages/41681093/TriggMine+API+documentation+ENG')
+    ('Magento 1.7', 'http://helpcenter.triggmine.com/integration/step-by-step-guide-for-magento-1x-integration'),
+    ('Magento 1.8', 'http://helpcenter.triggmine.com/integration/step-by-step-guide-for-magento-1x-integration'),
+    ('Magento 1.9', 'http://helpcenter.triggmine.com/integration/step-by-step-guide-for-magento-1x-integration'),
+    ('Magento 2', 'http://helpcenter.triggmine.com/integration/step-by-step-guide-for-magento-2x-integration'),
+    ('Prestashop 1.6', 'http://helpcenter.triggmine.com/integration/step-by-step-guide-for-prestashop-integration'),
+    ('Prestashop 1.7', 'http://helpcenter.triggmine.com/integration/step-by-step-guide-for-prestashop-integration'),
+    ('Woocomerce', 'http://helpcenter.triggmine.com/integration/step-by-step-guide-for-woocommerce-integration'),
+    ('Shopify', 'http://helpcenter.triggmine.com/integration/step-by-step-guide-for-shopify-integration'),
+    ('CS-Cart', 'http://helpcenter.triggmine.com/integration/step-by-step-guide-for-cs-cart-integration'),
+    ('Other', 'http://helpcenter.triggmine.com/integration/api-integration')
 ]
 
 
@@ -18,7 +19,8 @@ cms_market_place = [
     ('Magento 2', 'https://marketplace.magento.com/triggmine-connector.html'),
     ('Prestashop 1.6', 'https://addons.prestashop.com/en/remarketing-shopping-cart-abandonment/25899-triggmine.html'),
     ('Prestashop 1.7', 'https://addons.prestashop.com/en/remarketing-shopping-cart-abandonment/25899-triggmine.html'),
-    ('Woocomerce 2.6', 'https://wordpress.org/plugins/triggmine-email-workflows-made-perfectly-easy/')
+    ('CS-Cart', 'http://marketplace.cs-cart.com/add-ons/marketing/triggmine.html'),
+    ('Woocomerce', 'https://wordpress.org/plugins/triggmine-email-workflows-made-perfectly-easy/')
 ]
 
 cms_list = [
@@ -28,7 +30,8 @@ cms_list = [
     'Magento 2',
     'Prestashop 1.6',
     'Prestashop 1.7',
-    'Woocomerce 2.6',
+    'Woocomerce',
     'Shopify',
+    'CS-Cart',
     'Other'
 ]

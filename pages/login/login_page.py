@@ -1,5 +1,6 @@
 from base import Page
 from data import url
+from request.plugin_integration import plugin_diagnostic
 from tools.mongodb import mongodb_last_user
 from pages.login.login_page_locators import LoginPageLocators
 from pages.header.header_element_locators import HeaderElementLocators
@@ -42,10 +43,16 @@ class LoginPage(Page):
         self.click(LoginPageLocators.LINK_FORGOT_PASSWORD)
 
     def login_in(self, email=mongodb_last_user(), password='123456'):
+        self.open_login_page()
         self.enter_email(email)
+        print(email)
         self.enter_password(password)
         self.click_login_button()
         self.wait(500, HeaderElementLocators.LOGO_ICON)
 
     def is_login_button(self):
         return self.is_displayed(LoginPageLocators.SUBMIT)
+
+    def plugin_integration(self):
+        plugin_diagnostic()
+

@@ -7,5 +7,5 @@ class LoginPageLocators(object):
     SUBMIT = (By.XPATH, '//button')
     NOTIFICATION_EMPTY_EMAIL_FIELD = (By.XPATH, '//*[@type="email"]/../../span[2]')
     NOTIFICATION_EMPTY_PASSWORD_FIELD = (By.XPATH, '//*[@type="password"]/../../../span[2]')
-    FORM_NOTIFICATION = (By.XPATH, '//p')
+    FORM_NOTIFICATION = (By.XPATH, '//div/span/p')
     LINK_FORGOT_PASSWORD = (By.XPATH, '//a[contains(@href,"/forgetpassword")]')

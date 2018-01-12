@@ -11,7 +11,6 @@ from data.users import REAL_USER_EMAIL, NEW_USER_PASSWORD, UNCONFIRMED_USER_EMAI
 def test_login_in(driver):
     login = LoginPage(driver)
     dashboard = DashboardPage(driver)
-    login.open_login_page()
     login.login_in(REAL_USER_EMAIL, NEW_USER_PASSWORD)
     assert dashboard.is_statistic_header()
 
@@ -129,6 +128,7 @@ def test_check_reset_password_link(driver):
     assert password_reset.is_reset_password_button()
 
 
+# Checking of Intercom chat is present.
 def test_check_intercom_chat(driver):
     login = LoginPage(driver)
     dashboard = DashboardPage(driver)

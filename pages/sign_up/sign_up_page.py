@@ -2,6 +2,7 @@ from base import Page
 from data import url
 from data.industry import INDUSTRY
 from data.users import NEW_USER_EMAIL as new_email
+from tools.postgresql import get_user_data
 from tools.mongodb import mongodb_insert_user
 from pages.sign_up.sign_up_page_locators import SignUpPageLocators
 from pages.sign_up.sign_up_page_locators import select_industry
@@ -86,7 +87,8 @@ class SignUpPage(Page):
     def new_registration(self, shop, email, name, password, industry):
         self.fill_the_form(shop, industry, name, email, password)
         self.click_signup_button()
-        mongodb_insert_user(email, name, password, industry, shop)
+        api_key, user_name, shop_url = get_user_data(email)
+        mongodb_insert_user(email, name, password, industry, shop, api_key, user_name)
 
     def click_terms_of_use(self):
         self.click(SignUpPageLocators.LINK_TERMS_OF_USE)

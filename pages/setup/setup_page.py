@@ -1,6 +1,8 @@
 import re
 from base import Page
 from data import url
+from tools.mongodb import mongodb_last_user
+from tools.postgresql import get_user_data
 from pages.setup.setup_page_locators import select_cms
 from pages.setup.setup_page_locators import SetupPageLocators
 
@@ -25,10 +27,11 @@ class SetupPage(Page):
         self.click(SetupPageLocators.SIGN_UP_SETTINGS_LINK)
 
     def click_integration_open_cms_list(self):
-        self.click(SetupPageLocators.INTEGRATION_OPEN_CMS_LIST)
+        self.click(SetupPageLocators.INTEGRATION_OPEN_CMS_LIST_BUTTON)
 
     def click_integration_download_plugin_button(self):
         self.click(SetupPageLocators.INTEGRATION_DOWNLOAD_PLUGIN_BUTTON)
+        self.close_first_windows()
         self.switch_to_open_window()
 
     def click_integration_send_instruction_button(self):
@@ -36,17 +39,25 @@ class SetupPage(Page):
 
     def click_integration_watch_tutorial_link(self):
         self.click(SetupPageLocators.INTEGRATION_WATCH_TUTORIAL_LINK)
+        self.close_first_windows()
         self.switch_to_open_window()
 
     def click_integration_send_instruction_to_developer_button(self):
         self.click(SetupPageLocators.INTEGRATION_SEND_INSTRUCTION_FORM_SEND_BUTTON)
 
-    def send_keys_developer_email( self, email ):
+    def click_integration_confirm_shop_details_button(self):
+        self.click(SetupPageLocators.INTEGRATION_CONFIRM_SHOP_DETAILS_BUTTON)
+
+    def send_keys_developer_email(self, email=mongodb_last_user()):
         self.send_keys(SetupPageLocators.INTEGRATION_SEND_INSTRUCTION_FORM_INPUT, email)
+
+    def send_keys_shop_url(self, shop_url):
+        self.send_keys(SetupPageLocators.INTEGRATION_SHOP_URL_INPUT, shop_url)
 
     def choose_cms(self, name):
         self.click_integration_open_cms_list()
         self.click(select_cms(name))
+        self.wait_until_element_is_not_show(30, SetupPageLocators.INTEGRATION_CMS_LIST)
 
     def open_setup_sign_up_page(self):
         self.open_page(url.SETUP_SIGN_UP)
@@ -76,12 +87,22 @@ class SetupPage(Page):
     def text_of_notification_massage(self):
         return self.get_text(SetupPageLocators.SETUP_NOTIFICATION_MASSAGE)
 
+    def text_of_plugin_status_block(self):
+        return self.get_text(SetupPageLocators.INTEGRATION_PLUGIN_STATUS_BLOCK)
+
     def value_of_api_url(self):
         return self.get_value(SetupPageLocators.INTEGRATION_API_URL_INPUT)
 
-    def check_api_form(self, api_url):
-        try:
-            re.search('^(cabinet+[0-9.]+triggmine.com)', api_url).group(0)
-        except:
-            raise Exception('API URL is not correct ' + 'API URL = ' + api_url)
+    def value_of_api_key(self):
+        return self.get_value(SetupPageLocators.INTEGRATION_API_KEY_INPUT)
 
+    def value_shop_url(self):
+        return self.get_value(SetupPageLocators.INTEGRATION_SHOP_URL_INPUT)
+
+    def check_api_key_db(self, email=mongodb_last_user()):
+        api_key, user_name, shop_url = get_user_data(email)
+        return api_key
+
+    def check_shop_url_in_db(self, email=mongodb_last_user()):
+        api_key, user_name, shop_url = get_user_data(email)
+        return shop_url

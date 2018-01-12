@@ -10,11 +10,11 @@ db = client.triggmine
 def check_mongodb_connection():
     try:
         client.server_info()
-    except ServerSelectionTimeoutError:
+    except ServerSelectionTimeoutError or ServerSelectionTimeoutError:
         raise Exception('Error connection to MongoDB')
 
 
-def mongodb_insert_user(email, name, password, industry, shop):
+def mongodb_insert_user(email, name, password, industry, shop, api_key, user_name):
     check_mongodb_connection()
     collection = db.users
     collection.save({
@@ -23,11 +23,20 @@ def mongodb_insert_user(email, name, password, industry, shop):
         "password": password,
         "industry": industry,
         "shop": shop,
-        "date": datetime.datetime.now()})
+        "date": datetime.datetime.now(),
+        "api_key": api_key,
+        "user_name": user_name})
 
 
-def mongodb_last_user():
+def mongodb_last_user(data='email'):
     check_mongodb_connection()
     collection = db.users
-    for email in collection.find({"date": {"$lte": datetime.datetime.now()}}).sort([('date', -1)]).limit(1):
-        return email['email']
+    if data == 'email':
+        for email in collection.find({"date": {"$lte": datetime.datetime.now()}}).sort([('date', -1)]).limit(1):
+            return email['email']
+    elif data == 'api_key':
+        for api_key in collection.find({"date": {"$lte": datetime.datetime.now()}}).sort([('date', -1)]).limit(1):
+            return api_key['api_key']
+    elif data == 'user_name':
+        for user_name in collection.find({"date": {"$lte": datetime.datetime.now()}}).sort([('date', -1)]).limit(1):
+            return user_name['user_name']

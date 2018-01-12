@@ -95,8 +95,7 @@ def test_existing_user(driver):
 
 
 # New registration.
-@pytest.mark.skip(reason='Skipping new registration')
-@pytest.mark.usefixture("mongodb_check")
+# @pytest.mark.skip(reason='Skipping new registration')
 def test_new_registration(driver):
     sign_up = SignUpPage(driver)
     login = LoginPage(driver)

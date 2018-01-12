@@ -64,9 +64,9 @@ def test_change_password(driver):
     password.open_password_page()
     password.send_keys_email_field(RESET_PASSWORD_USER_EMAIL)
     password.click_reset_password_button()
+    assert login.text_form_notification() == 'Email sent successfully'
     password.open_url(check_email('Password recovery'))
     password.send_keys_password_field(RESET_PASSWORD_USER_NEW_PASSWORD)
     password.click_reset_password_button()
-    login.open_login_page()
     login.login_in(RESET_PASSWORD_USER_EMAIL, RESET_PASSWORD_USER_NEW_PASSWORD)
     assert dashboard.is_statistic_header()
