@@ -14,7 +14,7 @@ def check_mongodb_connection():
         raise Exception('Error connection to MongoDB')
 
 
-def mongodb_insert_user(email, name, password, industry, shop, api_key, user_name):
+def mongodb_insert_user(email, name, password, industry, shop, api_key, user_name, shop_currency):
     check_mongodb_connection()
     collection = db.users
     collection.save({
@@ -25,7 +25,8 @@ def mongodb_insert_user(email, name, password, industry, shop, api_key, user_nam
         "shop": shop,
         "date": datetime.datetime.now(),
         "api_key": api_key,
-        "user_name": user_name})
+        "user_name": user_name,
+        "shop_currency": shop_currency})
 
 
 def mongodb_last_user(data='email'):
@@ -33,6 +34,7 @@ def mongodb_last_user(data='email'):
     collection = db.users
     if data == 'email':
         for email in collection.find({"date": {"$lte": datetime.datetime.now()}}).sort([('date', -1)]).limit(1):
+            print(email['email'])
             return email['email']
     elif data == 'api_key':
         for api_key in collection.find({"date": {"$lte": datetime.datetime.now()}}).sort([('date', -1)]).limit(1):
@@ -40,3 +42,6 @@ def mongodb_last_user(data='email'):
     elif data == 'user_name':
         for user_name in collection.find({"date": {"$lte": datetime.datetime.now()}}).sort([('date', -1)]).limit(1):
             return user_name['user_name']
+
+print(mongodb_last_user(data='email'))
+print(datetime.datetime.now())

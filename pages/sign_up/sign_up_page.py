@@ -87,8 +87,8 @@ class SignUpPage(Page):
     def new_registration(self, shop, email, name, password, industry):
         self.fill_the_form(shop, industry, name, email, password)
         self.click_signup_button()
-        api_key, user_name, shop_url = get_user_data(email)
-        mongodb_insert_user(email, name, password, industry, shop, api_key, user_name)
+        api_key, user_name, shop_url, shop_currency = get_user_data(email)
+        mongodb_insert_user(email, name, password, industry, shop, api_key, user_name, shop_currency)
 
     def click_terms_of_use(self):
         self.click(SignUpPageLocators.LINK_TERMS_OF_USE)

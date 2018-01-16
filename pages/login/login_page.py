@@ -9,6 +9,7 @@ from pages.header.header_element_locators import HeaderElementLocators
 class LoginPage(Page):
     def open_login_page(self):
         self.open_page(url.LOGIN_PAGE)
+        self.wait(10, LoginPageLocators.SUBMIT)
 
     def is_notification_from_email_field(self):
         return self.is_displayed(LoginPageLocators.NOTIFICATION_EMPTY_EMAIL_FIELD)

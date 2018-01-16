@@ -52,3 +52,5 @@ pip-delete-this-directory.txt
 *.pyc
 *.iml
 new.py
+tools/postgresql.py
+tools/check_email.py
