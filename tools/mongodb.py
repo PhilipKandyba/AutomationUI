@@ -43,5 +43,4 @@ def mongodb_last_user(data='email'):
         for user_name in collection.find({"date": {"$lte": datetime.datetime.now()}}).sort([('date', -1)]).limit(1):
             return user_name['user_name']
 
-print(mongodb_last_user(data='email'))
-print(datetime.datetime.now())
+print(mongodb_last_user(data='user_name'))

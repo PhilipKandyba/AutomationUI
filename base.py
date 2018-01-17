@@ -11,7 +11,6 @@ class Page:
         driver.implicitly_wait(10)
 
     def find_element(self, locator):
-        self.driver.implicitly_wait(10)
         self.driver.find_element(locator[0], locator[1])
 
     def is_displayed(self, locator):
@@ -31,7 +30,7 @@ class Page:
             self.driver.get(base_page + url)
 
     def click(self, locator):
-        WebDriverWait(self.driver, 30).until(ec.visibility_of_element_located((locator[0], locator[1]))).click()
+        WebDriverWait(self.driver, 30).until(ec.element_to_be_clickable((locator[0], locator[1]))).click()
 
     def wait(self, second, locator):
         WebDriverWait(self.driver, second).until(ec.visibility_of_element_located((locator[0], locator[1])))

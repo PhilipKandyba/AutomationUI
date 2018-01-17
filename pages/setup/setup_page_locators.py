@@ -6,9 +6,14 @@ def select_cms(name):
     return integration_cms_name
 
 
+def select_currency(name):
+    currency_name = (By.XPATH, '//li[contains(string(), "' + name + '")]')
+    return currency_name
+
+
 class SetupPageLocators(object):
     H2_TITLE = (By.XPATH, '//h2')
-    SETUP_NOTIFICATION_MASSAGE = (By.XPATH, '//i[@class="icon-attention" or "icon-check-bg"]/../..//p')
+    SETUP_NOTIFICATION_MASSAGE = (By.XPATH, '//div/span//i/../..//p')
     SIGN_UP_POPUP_TITLE = (By.XPATH, '//div//button/../h3')
     SIGN_UP_POPUP_BUTTON = (By.XPATH, '//div/p/../button')
     SIGN_UP_SETTINGS_LINK = (By.XPATH, '//a[contains(@href,"/settings/account")]')
@@ -31,7 +36,7 @@ class SetupPageLocators(object):
     INTEGRATION_CONFIRM_SHOP_DETAILS_BUTTON = (By.XPATH, '//button[contains(string(), "Confirm shop details")]')
     INTEGRATION_CURRENCY_USD = (By.XPATH, '//div[contains(text(), "USD")]')
     INTEGRATION_CURRENCY_AED = (By.XPATH, '//span[contains(text(), "AED")]')
-    INTEGRATION_OPEN_CURRENCY_LIST_BUTTON = (By.XPATH, '//i[@class="icon-arrow-down"]')
+    INTEGRATION_OPEN_CURRENCY_LIST_BUTTON = (By.XPATH, '//div[contains(text(), "Your Shop Currency")]/../..//button')
     EMAIL_DESIGN_SENDER_NAME = (By.XPATH, '//h2/..//i/../span')
     EMAIL_DESIGN_SENDER_EMAIL = (By.CLASS_NAME, 'style__email___2h3UU')
     EMAIL_DESIGN_OPEN_LIST_OF_SENDERS_BUTTON = (By.XPATH, '//div/i[@class="icon-arrow-down"]')
@@ -42,3 +47,8 @@ class SetupPageLocators(object):
     EMAIL_DESIGN_ADD_NEW_SENDER_FORM_CONFIRMATION_BUTTON = \
         (By.XPATH, '//button[@class="style__btnSave___FUYzc"]')
     EMAIL_DESIGN_ADD_NEW_SENDER_SUCCESS_PAGE_HEADER = (By.XPATH, '//h1')
+    EMAIL_DESIGN_ADD_SUPPORT_EMAIL_BUTTON = (By.XPATH, '//div[contains(text(), "Add support email")]')
+    EMAIL_DESIGN_ADD_SUPPORT_EMAIL_FIELD = (By.XPATH, '//input[@placeholder="Paste Email"]')
+    EMAIL_DESIGN_ADD_SUPPORT_EMAIL_FIELD_CONFIRM_BUTTON = (By.XPATH, '//input[@placeholder="Paste Email"]/../../button')
+    EMAIL_DESIGN_ADDED_SUPPORT_EMAIL = (By.XPATH, '//h5[contains(string(), "Support email")]/following-sibling::*')
+    EMAIL_DESIGN_CONFIRMATION_BUTTON = (By.XPATH, '//div[contains(text(), "Save changes")]')

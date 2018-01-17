@@ -30,15 +30,10 @@ def activating_setup_trial_modal():
     activate_setup_trial_modal(mongodb_last_user(data='user_name'))
 
 
-@pytest.fixture(scope='module')
+@pytest.fixture(scope='session')
 def login_in(driver):
     login = LoginPage(driver)
     login.login_in()
-
-#
-# @pytest.fixture()
-# def update_currency():
-#     set_currency(mongodb_last_user(data='user_name'))
 
 
 

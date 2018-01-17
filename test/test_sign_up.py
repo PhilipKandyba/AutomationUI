@@ -5,9 +5,7 @@ from pages.sign_up.sign_up_page import SignUpPage
 from pages.header.header_element import HeaderElement
 from pages.sign_up.sign_up_success_page import SingUpSuccessPage
 from data.users import REAL_USER_EMAIL
-from data.users import REAL_USER_PASSWORD as PASSWORD
-from data.users import REAL_USER_FIRST_NAME as NAME
-from data.users import TEST_WEB_SHOP_URL as SHOP
+from data.users import NEW_SHOP_URL as SHOP
 from data.users import NEW_USER_EMAIL as NEW_EMAIL
 from data.users import NEW_USER_PASSWORD as NEW_PASSWORD
 from data.users import NEW_USER_FIRST_NAME as NEW_NAME

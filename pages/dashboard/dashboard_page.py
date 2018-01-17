@@ -19,5 +19,5 @@ class DashboardPage(Page):
         return self.is_displayed(DashboardPageLocators.INTERCOM_IFRAME)
 
     def text_currency_symbol(self):
-        self.open_url(url.DASHBOARD)
+        self.open_page(url.DASHBOARD)
         return self.get_text(DashboardPageLocators.CURRENCY_SYMBOL)
