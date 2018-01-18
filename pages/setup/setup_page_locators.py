@@ -11,6 +11,11 @@ def select_currency(name):
     return currency_name
 
 
+def select_industries(name):
+    industries_name = (By.XPATH, '//h4[contains(text(), "' + name + '")]/../div')
+    return industries_name
+
+
 class SetupPageLocators(object):
     H2_TITLE = (By.XPATH, '//h2')
     SETUP_NOTIFICATION_MASSAGE = (By.XPATH, '//div/span//i/../..//p')
@@ -31,7 +36,7 @@ class SetupPageLocators(object):
     INTEGRATION_CMS_NAME_TUTORIAL_BLOCK = (By.XPATH, '//h3[contains(string(), "2")]/div')
     INTEGRATION_CMS_NAME_CREDENTIAL_BLOCK = (By.XPATH, '//h3[contains(string(), "3")]/div')
     INTEGRATION_API_URL_INPUT = (By.XPATH, '//label[starts-with(text(),"Your API URL")]/..//input')
-    INTEGRATION_API_KEY_INPUT = (By.XPATH, '//label[starts-with(text(),"Your API Key")]/..//input')
+    INTEGRATION_API_KEY_INPUT = (By.XPATH, '(//label[starts-with(text(),"Your API Key")]/..//input)[2]')
     INTEGRATION_SHOP_URL_INPUT = (By.XPATH, '//span[contains(string(), "Your webshop URL")]/..//input')
     INTEGRATION_CONFIRM_SHOP_DETAILS_BUTTON = (By.XPATH, '//button[contains(string(), "Confirm shop details")]')
     INTEGRATION_CURRENCY_USD = (By.XPATH, '//div[contains(text(), "USD")]')
@@ -52,3 +57,5 @@ class SetupPageLocators(object):
     EMAIL_DESIGN_ADD_SUPPORT_EMAIL_FIELD_CONFIRM_BUTTON = (By.XPATH, '//input[@placeholder="Paste Email"]/../../button')
     EMAIL_DESIGN_ADDED_SUPPORT_EMAIL = (By.XPATH, '//h5[contains(string(), "Support email")]/following-sibling::*')
     EMAIL_DESIGN_CONFIRMATION_BUTTON = (By.XPATH, '//div[contains(text(), "Save changes")]')
+    EMAIL_DESIGN_OPEN_INDUSTRIES_BUTTON = (By.XPATH, '//button[contains(text(), "Select other")]')
+    EMAIL_DESIGN_SELECTED_INDUSTRIES_NAME = (By.XPATH, '//div/h3')

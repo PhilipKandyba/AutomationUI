@@ -2,10 +2,10 @@ import re
 import time
 from base import Page
 from data import url
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import TimeoutException
 from tools.mongodb import mongodb_last_user
-from tools.postgresql import get_user_data, set_logo_image, set_support_email
-from pages.setup.setup_page_locators import select_cms, select_currency
+from tools.postgresql import get_user_data, select_user_industry
+from pages.setup.setup_page_locators import select_cms, select_currency, select_industries
 from pages.setup.setup_page_locators import SetupPageLocators
 
 
@@ -29,6 +29,7 @@ class SetupPage(Page):
         self.click(SetupPageLocators.SIGN_UP_SETTINGS_LINK)
 
     def click_integration_open_cms_list(self):
+        time.sleep(0.3)
         self.click(SetupPageLocators.INTEGRATION_OPEN_CMS_LIST_BUTTON)
 
     def click_integration_download_plugin_button(self):
@@ -69,8 +70,8 @@ class SetupPage(Page):
 
     def click_email_design_add_support_email_button(self):
         try:
-            self.find_element(SetupPageLocators.EMAIL_DESIGN_ADD_SUPPORT_EMAIL_BUTTON)
-        except NoSuchElementException:
+            self.click(SetupPageLocators.EMAIL_DESIGN_ADD_SUPPORT_EMAIL_BUTTON)
+        except TimeoutException:
             self.click(SetupPageLocators.EMAIL_DESIGN_ADDED_SUPPORT_EMAIL)
 
     def click_email_design_add_support_email_form_button(self):
@@ -78,6 +79,12 @@ class SetupPage(Page):
 
     def click_email_design_confirmation_button(self):
         self.click(SetupPageLocators.EMAIL_DESIGN_CONFIRMATION_BUTTON)
+
+    def click_email_design_open_industries_list(self):
+        self.click(SetupPageLocators.EMAIL_DESIGN_OPEN_INDUSTRIES_BUTTON)
+
+    def click_email_design_industry(self, name):
+        self.click(select_industries(name))
 
     def send_keys_developer_email(self, email=mongodb_last_user()):
         self.send_keys(SetupPageLocators.INTEGRATION_SEND_INSTRUCTION_FORM_INPUT, email)
@@ -96,6 +103,7 @@ class SetupPage(Page):
 
     def choose_cms(self, name):
         self.click_integration_open_cms_list()
+        time.sleep(0.5)
         self.click(select_cms(name))
         self.wait_until_element_is_not_show(30, SetupPageLocators.INTEGRATION_CMS_LIST)
 
@@ -108,7 +116,6 @@ class SetupPage(Page):
         self.wait(15, SetupPageLocators.INTEGRATION_CONFIRM_SHOP_DETAILS_BUTTON)
 
     def open_setup_email_design(self):
-        set_logo_image(mongodb_last_user(data='user_name'))
         self.open_page(url.SETUP_EMAIL_DESIGN)
 
     def is_integration_api_url_label(self):
@@ -154,6 +161,10 @@ class SetupPage(Page):
     def text_email_design_support_email(self):
         return self.get_text(SetupPageLocators.EMAIL_DESIGN_ADDED_SUPPORT_EMAIL)
 
+    def text_email_design_current_industry(self):
+        print(str(self.get_text(SetupPageLocators.EMAIL_DESIGN_SELECTED_INDUSTRIES_NAME)).split('\n')[0])
+        return str(self.get_text(SetupPageLocators.EMAIL_DESIGN_SELECTED_INDUSTRIES_NAME)).split('\n')[0]
+
     def value_of_api_url(self):
         return self.get_value(SetupPageLocators.INTEGRATION_API_URL_INPUT)
 
@@ -163,26 +174,33 @@ class SetupPage(Page):
     def value_shop_url(self):
         return self.get_value(SetupPageLocators.INTEGRATION_SHOP_URL_INPUT)
 
+    def check_user_name_db( self, email=mongodb_last_user() ):
+        user_name, api_key, shop_url, shop_currency, first_name, esp_email_from, support_email = get_user_data(email)
+        return user_name
+
     def check_api_key_db(self, email=mongodb_last_user()):
-        api_key, user_name, shop_url, shop_currency, first_name, esp_email_from, support_email = get_user_data(email)
+        user_name, api_key, shop_url, shop_currency, first_name, esp_email_from, support_email = get_user_data(email)
         return api_key
 
     def check_shop_url_in_db(self, email=mongodb_last_user()):
-        api_key, user_name, shop_url, shop_currency, first_name, esp_email_from, support_email = get_user_data(email)
+        user_name, api_key, shop_url, shop_currency, first_name, esp_email_from, support_email = get_user_data(email)
         return shop_url
 
     def check_shop_currency_in_db(self, email=mongodb_last_user()):
-        api_key, user_name, shop_url, shop_currency, first_name, esp_email_from, support_email = get_user_data(email)
+        user_name, api_key, shop_url, shop_currency, first_name, esp_email_from, support_email = get_user_data(email)
         return shop_currency
 
     def check_first_name_in_db(self, email=mongodb_last_user()):
-        api_key, user_name, shop_url, shop_currency, first_name, esp_email_from, support_email = get_user_data(email)
+        user_name, api_key, shop_url, shop_currency, first_name, esp_email_from, support_email = get_user_data(email)
         return first_name
 
     def check_email_from_in_db(self, email=mongodb_last_user()):
-        api_key, user_name, shop_url, shop_currency, first_name, esp_email_from, support_email = get_user_data(email)
+        user_name, api_key, shop_url, shop_currency, first_name, esp_email_from, support_email = get_user_data(email)
         return esp_email_from
 
     def check_support_email_in_db(self, email=mongodb_last_user()):
-        api_key, user_name, shop_url, shop_currency, first_name, esp_email_from, support_email = get_user_data(email)
+        user_name, api_key, shop_url, shop_currency, first_name, esp_email_from, support_email = get_user_data(email)
         return support_email
+
+    def check_industry_id_in_db(self, email=mongodb_last_user()):
+        return select_user_industry(email)

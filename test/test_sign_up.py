@@ -101,7 +101,7 @@ def test_new_registration(driver):
     sign_up_success = SingUpSuccessPage(driver)
     sign_up.open_signup_page()
     sign_up.new_registration(SHOP, NEW_EMAIL, NEW_NAME, NEW_PASSWORD, INDUSTRY[1])
-    sign_up.open_url(check_email('Activate'))
+    sign_up.open_url(check_email('Activate your account at TriggMine'))
     sign_up_success.is_confirm_header()
     sign_up_success.click_go_to_account_button()
     login.login_in(NEW_EMAIL, NEW_PASSWORD)

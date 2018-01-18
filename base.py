@@ -7,8 +7,6 @@ from data.url import base_page_test
 class Page:
     def __init__(self, driver):
         self.driver = driver
-        driver.maximize_window()
-        driver.implicitly_wait(10)
 
     def find_element(self, locator):
         self.driver.find_element(locator[0], locator[1])
@@ -18,8 +16,8 @@ class Page:
                                                     ((locator[0], locator[1]))).is_displayed()
 
     def send_keys(self, locator, text):
-        self.driver.find_element(locator[0], locator[1]).clear()
-        self.driver.find_element(locator[0], locator[1]).send_keys(text)
+        WebDriverWait(self.driver, 15).until(ec.visibility_of_element_located((locator[0], locator[1]))).clear()
+        WebDriverWait(self.driver, 15).until(ec.visibility_of_element_located((locator[0], locator[1]))).send_keys(text)
 
     def open_page(self, url):
         base_page = base_page_test
@@ -30,7 +28,7 @@ class Page:
             self.driver.get(base_page + url)
 
     def click(self, locator):
-        WebDriverWait(self.driver, 30).until(ec.element_to_be_clickable((locator[0], locator[1]))).click()
+        WebDriverWait(self.driver, 15).until(ec.element_to_be_clickable((locator[0], locator[1]))).click()
 
     def wait(self, second, locator):
         WebDriverWait(self.driver, second).until(ec.visibility_of_element_located((locator[0], locator[1])))
