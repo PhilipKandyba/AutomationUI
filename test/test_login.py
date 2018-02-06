@@ -1,3 +1,5 @@
+import pytest
+import allure
 from data import url
 from pages.login.login_page import LoginPage
 from pages.sign_up.sign_up_page import SignUpPage

@@ -10,6 +10,7 @@ from data.users import NEW_USER_EMAIL as NEW_EMAIL
 from data.users import NEW_USER_PASSWORD as NEW_PASSWORD
 from data.users import NEW_USER_FIRST_NAME as NEW_NAME
 from data.users import UNCONFIRMED_USER_EMAIL as UNCONFIRMED_EMAIL
+from data.incorrect_emails import incorrect_emails_list
 from data.industry import INDUSTRY
 from tools.check_email import check_email
 from data import url
@@ -116,6 +117,16 @@ def test_registration_on_unconfirmed_email(driver):
     sign_up.click_signup_button()
     assert sign_up.text_of_notification() == "Email " + UNCONFIRMED_EMAIL + " isn't confirmed. Please check your " \
                                                                             "mailbox for email validation"
+
+
+# Registration with invalid email.
+@pytest.mark.parametrize('incorrect_email', incorrect_emails_list)
+def test_registration_invalid_email(driver, incorrect_email):
+    sign_up = SignUpPage(driver)
+    sign_up.open_signup_page()
+    sign_up.fill_the_form(email=incorrect_email)
+    sign_up.click_signup_button()
+    assert sign_up.text_email_field_error_massage() == 'Invalid email address'
 
 
 # User enter shot password (3 symbol).

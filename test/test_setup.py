@@ -3,12 +3,13 @@ import pytest
 from data.currencies import currencies_list
 from data.cms import cms_tutorial_link, cms_market_place, cms_list
 from data.industries import industries_list
+from data.users import NEW_USER_EMAIL, NEW_SHOP_URL
+from data.incorrect_emails import incorrect_emails_list
 from pages.setup.setup_page import SetupPage
 from pages.dashboard.dashboard_page import DashboardPage
 from tools.check_email import check_email
 from pages.account_settings.account_settings_page import AccountSettings
 from request.plugin_integration import plugin_diagnostic
-from data.users import NEW_USER_EMAIL, NEW_SHOP_URL
 
 
 # Going from "Sign in" to "Integration"
@@ -81,7 +82,7 @@ def test_check_changes_cms_name(driver, cms_name):
 
 # Insert invalid data in email field on "Send instruction" form.
 @pytest.mark.usefixtures("login_in")
-@pytest.mark.parametrize('email', ['!@#$%^&*', 'qwe!#$%^&*@gmail.com', 'qwe.com', '@com.ua', 'qwe@qwe'])
+@pytest.mark.parametrize('email', incorrect_emails_list)
 def test_send_instruction_invalid_email(driver, email):
     setup = SetupPage(driver)
     setup.open_setup_integration_page()
@@ -181,7 +182,7 @@ def test_add_new_sender(driver):
 
 # Add new sender with incorrect email.
 @pytest.mark.usefixtures("login_in")
-@pytest.mark.parametrize('email', ['!@#$%^&*', 'qwe!#$%^&*@gmail.com', 'qwe.com', '@com.ua', 'qwe@wqe'])
+@pytest.mark.parametrize('email', incorrect_emails_list)
 def test_add_new_sender_with_incorrect_email(driver, email):
     setup = SetupPage(driver)
     setup.open_setup_email_design()
@@ -196,7 +197,7 @@ def test_add_new_sender_with_incorrect_email(driver, email):
 
 # Add incorrect support email.
 @pytest.mark.usefixtures("login_in", "add_logo_image")
-@pytest.mark.parametrize('email', ['!@#$%^&*', 'qwe!#$%^&*@gmail.com', 'qwe.com', '@com.ua', 'qwe@qwe'])
+@pytest.mark.parametrize('email', incorrect_emails_list)
 def test_add_support_email_invalid_data(driver, email):
     setup = SetupPage(driver)
     setup.open_setup_email_design()

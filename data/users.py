@@ -7,7 +7,7 @@ REAL_USER_FIRST_NAME = 'TEMP'
 NEW_USER_EMAIL = 'automation.test.tg+%s@gmail.com' % (time.strftime("%Y%d%b%H%M%S"))
 NEW_USER_PASSWORD = '123456'
 NEW_USER_FIRST_NAME = 'TEMP'
-NEW_SHOP_URL = '%s.com' % (time.strftime("%Y%d%b%H%M%S"))
+NEW_SHOP_URL = 'https://%s.com' % (time.strftime("%Y%d%b%H%M%S"))
 
 UNCONFIRMED_USER_EMAIL = 'not_confirm_email@email.com'  # cabinet2123287423
 

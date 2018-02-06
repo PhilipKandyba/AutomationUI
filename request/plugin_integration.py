@@ -1,3 +1,4 @@
+import time
 import requests
 import datetime
 from tools.mongodb import mongodb_last_user
@@ -6,6 +7,7 @@ from tools.mongodb import mongodb_last_user
 def plugin_diagnostic():
     user_name = mongodb_last_user(data='user_name')
     api_key = mongodb_last_user(data='api_key')
+    time.sleep(1)
     url = 'https://' + user_name + '.triggmine.com.ua/control/api/plugin/onDiagnosticInformationUpdated'
     headers = {
         'ApiKey': api_key
@@ -22,4 +24,5 @@ def plugin_diagnostic():
         raise Exception('Not created! ' + str(r.status_code))
     else:
         pass
+
 
