@@ -1,9 +1,12 @@
 import datetime
-import pytest
+import configparser
 from pymongo import MongoClient
 from pymongo.errors import ServerSelectionTimeoutError
 
-client = MongoClient("mongodb://localhost:27017/", serverSelectionTimeoutMS=10, connectTimeoutMS=20000)
+config = configparser.ConfigParser()
+config.read('../conf.ini')
+
+client = MongoClient(config.get('Mongo', 'host'), serverSelectionTimeoutMS=10, connectTimeoutMS=20000)
 db = client.triggmine
 
 

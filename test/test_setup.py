@@ -34,7 +34,7 @@ def test_check_account_setting_link(driver):
 
 
 # Checking link of documentation for all plugins.
-@pytest.mark.usefixtures("login_in")
+@pytest.mark.usefixtures("login_in", "clear_plugin_table")
 @pytest.mark.parametrize('cms_name,doc_link', cms_tutorial_link)
 def test_check_cms_documentation(driver, cms_name, doc_link):
     setup = SetupPage(driver)
@@ -45,7 +45,7 @@ def test_check_cms_documentation(driver, cms_name, doc_link):
 
 
 # Checking link of market place for all plugins.
-@pytest.mark.usefixtures("login_in")
+@pytest.mark.usefixtures("login_in", "clear_plugin_table")
 @pytest.mark.parametrize('cms_name,market_link', cms_market_place)
 def test_check_cms_market(driver, cms_name, market_link):
     setup = SetupPage(driver)
@@ -56,7 +56,7 @@ def test_check_cms_market(driver, cms_name, market_link):
 
 
 # Check instruction link on email for developer.
-@pytest.mark.usefixtures("login_in")
+@pytest.mark.usefixtures("login_in", "clear_plugin_table")
 @pytest.mark.parametrize('cms_name,doc_link', cms_tutorial_link)
 def test_send_instruction(driver, cms_name, doc_link):
     setup = SetupPage(driver)
@@ -70,7 +70,7 @@ def test_send_instruction(driver, cms_name, doc_link):
 
 
 # Change text when choosing a CMS.
-@pytest.mark.usefixtures("login_in")
+@pytest.mark.usefixtures("login_in", "clear_plugin_table")
 @pytest.mark.parametrize('cms_name', cms_list)
 def test_check_changes_cms_name(driver, cms_name):
     setup = SetupPage(driver)

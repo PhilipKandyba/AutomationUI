@@ -3,7 +3,7 @@ import psycopg2
 from selenium import webdriver
 from pages.login.login_page import LoginPage
 from tools.mongodb import check_mongodb_connection, mongodb_last_user
-from tools.postgresql import activate_setup_trial_modal, set_support_email, set_logo_image
+from tools.postgresql import activate_setup_trial_modal, set_support_email, set_logo_image, delete_plugin_integration
 
 browsers = {
     'chrome': webdriver.Chrome,
@@ -41,4 +41,8 @@ def add_support_email():
 def add_logo_image():
     set_logo_image(mongodb_last_user(data='user_name'))
 
+
+@pytest.fixture()
+def clear_plugin_table():
+    mongodb_last_user(data='user_name')
 
