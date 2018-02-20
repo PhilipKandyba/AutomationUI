@@ -4,7 +4,7 @@ from data.currencies import currencies_list
 from data.cms import cms_tutorial_link, cms_market_place, cms_list
 from data.industries import industries_list
 from data.users import NEW_USER_EMAIL, NEW_SHOP_URL
-from data.incorrect_emails import incorrect_emails_list
+from data.incorrect_user_data import incorrect_emails_list
 from pages.setup.setup_page import SetupPage
 from pages.dashboard.dashboard_page import DashboardPage
 from tools.check_email import check_email
@@ -94,7 +94,7 @@ def test_send_instruction_invalid_email(driver, email):
 
 
 # Send new "Diagnostic" request and check massage about integration in banner.
-@pytest.mark.usefixtures("login_in")
+@pytest.mark.usefixtures("login_in", "delete_from_plugin_diagnostic")
 def test_new_plugin_integration(driver):
     setup = SetupPage(driver)
     setup.open_setup_integration_page()
@@ -137,12 +137,11 @@ def test_change_shop_url(driver):
     assert setup.text_of_notification_massage() == 'Shop details updated'
     setup.open_setup_integration_page()
     assert setup.value_shop_url() == setup.check_shop_url_in_db()
-    assert setup.value_shop_url() == NEW_SHOP_URL
+    assert setup.value_shop_url() == 'https://' + NEW_SHOP_URL
 
 
 # Change currency from USD to AED and check in DB.
 # Check changes of from USD to AED currency symbol.
-@pytest.mark.skip
 @pytest.mark.parametrize('name,symbol', currencies_list)
 @pytest.mark.usefixtures("login_in")
 def test_check_default_currency(driver, name, symbol):

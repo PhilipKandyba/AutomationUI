@@ -3,10 +3,10 @@ import configparser
 from pymongo import MongoClient
 from pymongo.errors import ServerSelectionTimeoutError
 
-config = configparser.ConfigParser()
+config = configparser.RawConfigParser()
 config.read('../conf.ini')
-
-client = MongoClient(config.get('Mongo', 'host'), serverSelectionTimeoutMS=10, connectTimeoutMS=20000)
+print(config.get('MongoDB', 'host'))
+client = MongoClient('mongodb://localhost:27017/', serverSelectionTimeoutMS=10, connectTimeoutMS=20000)
 db = client.triggmine
 
 

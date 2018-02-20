@@ -83,6 +83,15 @@ def select_user_industry(email):
     conn.close()
 
 
+def select_user_email(user_name=mongodb_last_user(data='user_name')):
+    cur = conn.cursor()
+    time.sleep(0.3)
+    cur.execute("SELECT email FROM tma.customer WHERE user_name=(%s)", (user_name,))
+    for email in cur.fetchone():
+        return email
+    conn.close()
+
+
 def delete_plugin_integration():
     cur = conn.cursor()
     sql = "DELETE from {0}.react_plugin_diagnostic".format(mongodb_last_user(data='user_name'))

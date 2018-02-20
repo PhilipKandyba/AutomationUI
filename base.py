@@ -75,3 +75,6 @@ class Page:
     def switch_to_frame(self, locator):
         iframe = self.driver.find_element(locator[0], locator[1])
         self.driver.switch_to_frame(iframe)
+
+    def clear_field(self, locator):
+        WebDriverWait(self.driver, 15).until(ec.visibility_of_element_located((locator[0], locator[1]))).clear()

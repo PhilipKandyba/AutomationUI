@@ -172,9 +172,9 @@ class SetupPage(Page):
         return self.get_value(SetupPageLocators.INTEGRATION_API_KEY_INPUT)
 
     def value_shop_url(self):
-        return self.get_value(SetupPageLocators.INTEGRATION_SHOP_URL_INPUT)
+        return 'https://' + self.get_value(SetupPageLocators.INTEGRATION_SHOP_URL_INPUT)
 
-    def check_user_name_db( self, email=mongodb_last_user() ):
+    def check_user_name_db(self, email=mongodb_last_user()):
         user_name, api_key, shop_url, shop_currency, first_name, esp_email_from, support_email = get_user_data(email)
         return user_name
 

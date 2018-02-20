@@ -10,7 +10,7 @@ from data.users import NEW_USER_EMAIL as NEW_EMAIL
 from data.users import NEW_USER_PASSWORD as NEW_PASSWORD
 from data.users import NEW_USER_FIRST_NAME as NEW_NAME
 from data.users import UNCONFIRMED_USER_EMAIL as UNCONFIRMED_EMAIL
-from data.incorrect_emails import incorrect_emails_list
+from data.incorrect_user_data import incorrect_emails_list
 from data.industry import INDUSTRY
 from tools.check_email import check_email
 from data import url

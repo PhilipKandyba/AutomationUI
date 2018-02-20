@@ -23,7 +23,7 @@ class SetupPageLocators(object):
     SIGN_UP_POPUP_BUTTON = (By.XPATH, '//div/p/../button')
     SIGN_UP_SETTINGS_LINK = (By.XPATH, '//a[contains(@href,"/settings/account")]')
     SIGN_UP_NEXT_STEP_BUTTON = (By.XPATH, '//div/button')
-    INTEGRATION_PLUGIN_STATUS_BLOCK = (By.XPATH, '//p[contains(text(), "Trigmine integrated")]')
+    INTEGRATION_PLUGIN_STATUS_BLOCK = (By.XPATH, '//div[contains(text(), "Trigmine integrated")]')
     INTEGRATION_API_ULR_LABEL = (By.XPATH, '//label[contains(string(), "API URL")]')
     INTEGRATION_OPEN_CMS_LIST_BUTTON = (By.XPATH, '//div[contains(text(), "My web")]//i[@class="icon-arrow-down-bold"]')
     INTEGRATION_CMS_LIST = (By.XPATH, '//div/ul[@role="menu"]')
